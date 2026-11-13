@@ -12,6 +12,11 @@ body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,-apple-system
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
 .w{max-width:1200px;margin:0 auto;padding:0 24px}
 
+/* View Transition suave para o Dark/Light Mode */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 9999; }
+
 /* Tela de Carregamento Inicial */
 #app-loader {
   position: fixed;
@@ -28,9 +33,9 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
   visibility: hidden;
 }
 
-/* Loader Estilizado (PC: 5.15em | Celular com escala e proporção ajustadas) */
+/* Loader Estilizado (Aumentado em 15% para PC: 5.92em) */
 .loader {
-  --main-size: 5.15em;
+  --main-size: 5.92em;
   --text-color: #ffffff;
   --shine-color: #ffffff40;
   --shadow-color: #aaaaaa;
@@ -51,7 +56,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
 
 @media (max-width: 768px) {
   .loader {
-    --main-size: calc(3.95em + 2.2vw);
+    --main-size: calc(4.2em + 2.5vw);
   }
 }
 
@@ -584,7 +589,82 @@ function st(i,d){const was=q.some(x=>x);q[i]=Math.max(0,Math.min(8,q[i]+d));if(!
 
 const detail=()=>{const e=E[sel];return`<header class="ph dh" style="background-image:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)),url('${e.img}')"><div class="w in"><p class="eb">${e.c} · ${e.d} · ${e.city}</p><h1>${e.n}</h1><div class="mt"><span>${e.l}</span><span>20h · Abertura 18h</span><span>Classificação: 16 anos</span></div></div></header>
 <div class="w dl"><div><h3>Sobre o evento</h3><p>Uma noite pensada em cada detalhe: som de alta fidelidade, iluminação cênica e uma estrutura que coloca você perto de quem importa. Entrada por QR Code, sem fila.</p><h3>Programação</h3><div class="lu">Abertura dos portões<span>18:00</span></div><div class="lu">Atração principal<span>20:00</span></div><div class="lu">Encerramento<span>23:30</span></div><h3>Local</h3><div class="map"><div><i></i>${e.l}<br><small style="color:var(--mu);font-weight:400">${e.city}</small></div></div></div>
-<aside class="box"><h3>Ingressos</h3><div id="tx">${tix()}</div><button type="button" class="btn w100" onclick="sub()?location.hash='#/carrinho':toast('Escolha ao menos 1 ingresso')">Comprar ingresso</button></aside></div>`};
+<aside class="box"><h3>Ingressos</h3><div id="tx">${tix()}</div><button type="button" class="btn w100" onclick="iniciarCompra()">Comprar ingresso</button></aside></div>`};
+
+/* Sistema de Fila Virtual / Sala de Espera (Estilo Ticketmaster) */
+let filaAtiva = false;
+let posFila = 42;
+let tempoFila = 12;
+
+function iniciarCompra() {
+  if (!sub()) {
+    toast('Escolha ao menos 1 ingresso');
+    return;
+  }
+  filaAtiva = true;
+  posFila = Math.floor(Math.random() * 30) + 15;
+  tempoFila = Math.floor(posFila / 3) + 3;
+  $('#app').innerHTML = renderFilaModal();
+  iniciarContagemFila();
+}
+
+function renderFilaModal() {
+  const e = E[sel];
+  return `
+    <div class="w pg" style="max-width: 600px; text-align: center; padding-top: 60px;">
+      <div class="cd" style="padding: 40px 24px;">
+        <div style="width: 64px; height: 64px; margin: 0 auto 20px; border-radius: 50%; background: rgba(10, 71, 245, 0.1); display: grid; place-items: center; color: var(--bl);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h2 style="font-size: 26px; margin-bottom: 8px;">Você está na Fila Virtual</h2>
+        <p style="color: var(--mu); margin-bottom: 24px;">Alta demanda para <b>${e.n}</b>. Protegendo seu acesso ao carrinho...</p>
+        
+        <div style="background: var(--bg); border: 1px solid var(--ln); border-radius: 16px; padding: 24px; margin-bottom: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <small style="color: var(--mu); text-transform: uppercase; font-size: 11px; font-weight: 700;">Sua Posição</small>
+            <b id="fila-pos" style="display: block; font-size: 36px; color: var(--bl); margin-top: 4px;">${posFila}º</b>
+          </div>
+          <div>
+            <small style="color: var(--mu); text-transform: uppercase; font-size: 11px; font-weight: 700;">Tempo Estimado</small>
+            <b id="fila-tempo" style="display: block; font-size: 36px; color: var(--ink); margin-top: 4px;">~${tempoFila}s</b>
+          </div>
+        </div>
+
+        <div style="width: 100%; height: 6px; background: var(--ln); border-radius: 3px; overflow: hidden; margin-bottom: 24px;">
+          <div id="fila-barra" style="width: 15%; height: 100%; background: var(--bl); border-radius: 3px; transition: width 1s linear;"></div>
+        </div>
+
+        <p style="font-size: 13px; color: var(--mu);">Por favor, não atualize ou feche esta página para não perder sua vaga.</p>
+      </div>
+    </div>
+  `;
+}
+
+function iniciarContagemFila() {
+  const timer = setInterval(() => {
+    if (!filaAtiva || location.hash.indexOf('evento') === -1) {
+      clearInterval(timer);
+      return;
+    }
+    posFila -= Math.floor(Math.random() * 4) + 2;
+    if (posFila <= 0) {
+      posFila = 0;
+      clearInterval(timer);
+      filaAtiva = false;
+      toast('Sua vez chegou! Redirecionando...');
+      setTimeout(() => {
+        location.hash = '#/carrinho';
+      }, 800);
+      return;
+    }
+    tempoFila = Math.max(1, Math.ceil(posFila / 3));
+    const progresso = Math.min(95, Math.round(((42 - posFila) / 42) * 80) + 15);
+    
+    if ($('#fila-pos')) $('#fila-pos').textContent = posFila + 'º';
+    if ($('#fila-tempo')) $('#fila-tempo').textContent = '~' + tempoFila + 's';
+    if ($('#fila-barra')) $('#fila-barra').style.width = progresso + '%';
+  }, 1000);
+}
 
 const cart=()=>{const e=E[sel],s=sub(),n=q.reduce((a,b)=>a+b,0),d=s*cp,f=s*.1;
 if(!n)return`<div class="w pg" style="text-align:center;padding:100px 0"><h1 style="text-align:center">Seu carrinho está vazio</h1><p style="color:var(--mu);margin:12px 0 28px">Escolha um evento e seus ingressos aparecem aqui.</p><a class="btn" href="#/eventos">Explorar eventos</a></div>`;
@@ -735,11 +815,45 @@ function fav(ev,i){
 const favs=()=>`<div class="w pg"><h1>Favoritos</h1><p style="color:var(--mu);margin:8px 0 28px">Eventos que você salvou.</p><div class="gr">${[...FV].map(i=>card(E[i],i)).join('')||'<p class="empty">Você ainda não favoritou nenhum evento.<br><a class="mo" href="#/eventos">Explorar eventos ›</a></p>'}</div></div>`;
 
 const prof=()=>`<div class="w pg" style="max-width:760px"><h1>Perfil</h1><div class="cd" style="margin-top:28px"><h3>Dados pessoais</h3><form class="fm" onsubmit="psv(event)"><label class="fl">Nome<input name="n" required value="${esc(U)}"></label><label class="fl">E-mail<input name="m" type="email" value="${esc(PR.m)}" placeholder="voce@email.com"></label><button type="submit" class="btn" style="justify-self:start">Salvar alterações</button></form></div>
-<div class="cd"><h3>Preferências</h3><div class="lu"><b>Modo escuro</b><button type="button" class="tg ${th()=='dark'?'on':''}" onclick="tth(this)" aria-label="Modo escuro"></button></div><div class="lu"><b>Notificações por e-mail</b><button type="button" class="tg ${NT?'on':''}" onclick="NT=!NT;this.classList.toggle('on')" aria-label="Notificações"></button></div></div>
+<div class="cd"><h3>Preferências</h3><div class="lu"><b>Modo escuro</b><button type="button" class="tg ${th()=='dark'?'on':''}" onclick="tth(event, this)" aria-label="Modo escuro"></button></div><div class="lu"><b>Notificações por e-mail</b><button type="button" class="tg ${NT?'on':''}" onclick="NT=!NT;this.classList.toggle('on')" aria-label="Notificações"></button></div></div>
 <div class="cd"><h3>Histórico de pedidos</h3>${OR.map(o=>`<div class="lu"><div><b>${E[o.e].n}</b><br><small style="color:var(--mu)">#${o.id} · ${o.n} ingresso(s)</small></div><b>${R(o.tot)}</b></div>`).join('')||'<p style="color:var(--mu)">Você ainda não fez nenhum pedido.</p>'}</div><button type="button" class="btn" style="background:var(--sf);color:#ff3b30" onclick="U=null;location.hash='#/'">Sair</button></div>`;
 
 function psv(e){e.preventDefault();U=e.target.elements.n.value.trim().split(' ')[0]||U;PR.m=e.target.elements.m.value;toast('Alterações salvas.')}
-function tth(b){const n=th()=='dark'?'light':'dark';document.documentElement.dataset.theme=n;b.classList.toggle('on',n=='dark')}
+
+/* Dark/Light Mode com View Transitions API fluida */
+function tth(event, b) {
+  const nextTheme = th() === 'dark' ? 'light' : 'dark';
+  
+  if (!document.startViewTransition) {
+    document.documentElement.dataset.theme = nextTheme;
+    b.classList.toggle('on', nextTheme === 'dark');
+    return;
+  }
+
+  const x = event.clientX || window.innerWidth / 2;
+  const y = event.clientY || window.innerHeight / 2;
+  const endRadius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+  const transition = document.startViewTransition(() => {
+    document.documentElement.dataset.theme = nextTheme;
+    b.classList.toggle('on', nextTheme === 'dark');
+  });
+
+  transition.ready.then(() => {
+    document.documentElement.animate(
+      [
+        { clipPath: `circle(0px at ${x}px ${y}px)` },
+        { clipPath: `circle(${endRadius}px at ${x}px ${y}px)` }
+      ],
+      {
+        duration: 500,
+        easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+        pseudoElement: '::view-transition-new(root)'
+      }
+    );
+  });
+}
+
 const adm=(a,t,x,c)=>`<div class="w pg"><p style="color:var(--bl);font-weight:600;font-size:14px;margin-bottom:6px">Painel do organizador</p><h1>${t}</h1><div class="bar"><div class="ct">${[['','Dashboard'],['eventos','Meus eventos'],['checkin','Check-in'],['participantes','Participantes']].map(z=>`<a class="chip ${a==z[0]?'on':''}" href="#/painel${z[0]?'/'+z[0]:''}">${z[1]}</a>`).join('')}</div><div class="sp"></div>${x}</div>${c}<div style="height:48px"></div></div>`;
 function panel(w,id){if(w=='eventos')return evs();if(w=='novo'){EF=nef(-1);return form()}if(w=='editar'){EF=nef(+id);return form()}if(w=='checkin')return chk();if(w=='participantes')return pts();return dash()}
 const tot=()=>ME.reduce((a,e)=>a+e.sold,0),avg=e=>e.lots.reduce((a,l)=>a+(+l.p||0),0)/e.lots.length,rev=()=>ME.reduce((a,e)=>a+e.sold*avg(e),0);
