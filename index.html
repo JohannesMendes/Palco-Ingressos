@@ -13,9 +13,11 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
 .w{max-width:1200px;margin:0 auto;padding:0 24px}
 
 /* Top Navbar with Integrated Animated/Magnetic Icons */
+.top-nav .nv{padding:0 24px}
+
 nav.top-nav{position:sticky;top:0;z-index:90;background:rgba(10,61,240,0.92);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid rgba(255,255,255,0.15);color:#fff}
 :root[data-theme=dark] nav.top-nav{background:rgba(11,31,110,0.92);border-bottom:1px solid rgba(255,255,255,0.1)}
-.nv{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.nv{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px;width:100%}
 .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-style:italic;font-size:25px;letter-spacing:-.04em;color:#fff;flex-shrink:0}.logo svg{width:24px;height:24px}
 
 /* Top Magnetic Bar Container */
@@ -168,7 +170,7 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
 </head>
 <body>
 
-<nav class="top-nav"><div class="w nv">
+<nav class="top-nav"><div class="nv">
 <a class="logo" href="#/"><svg viewBox="0 0 32 32" fill="none"><defs><linearGradient id="g" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#cfe0ff"/></linearGradient></defs><path d="M6 5h20a2 2 0 0 1 2 2v5a4 4 0 0 0 0 8v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5a4 4 0 0 0 0-8V7a2 2 0 0 1 2-2Z" fill="url(#g)"/><path d="M13 11.5h4.2a3 3 0 0 1 0 6H13v4" stroke="#0a3df0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Palco</a>
 
 <!-- Integrated Magnetic Animated Nav Bar -->
@@ -234,7 +236,18 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
 <footer><div class="w">© 2026 Palco · Projeto de portfólio. Pagamentos simulados. · <a href="#/painel" style="color:var(--bl)">Organizar eventos</a></div></footer>
 
 <script>
-const E=[{n:"Aurora Festival 2026",c:"Shows",city:"Belo Horizonte",l:"Esplanada do Mineirão",d:"18 Out",p:189,s:2},{n:"Noite de Jazz",c:"Shows",city:"Juiz de Fora",l:"Cine-Theatro Central",d:"20 Out",p:90,s:3},{n:"Hamlet — Temporada",c:"Teatro",city:"Belo Horizonte",l:"Palácio das Artes",d:"24 Out",p:70,s:4},{n:"Cine ao Ar Livre",c:"Cinema",city:"Juiz de Fora",l:"Parque Halfeld",d:"26 Out",p:35,s:5},{n:"Eletro Sunset",c:"Festas",city:"Rio de Janeiro",l:"Pier Mauá",d:"02 Nov",p:70,s:6},{n:"Rock na Praça",c:"Shows",city:"Belo Horizonte",l:"Praça da Estação",d:"09 Nov",p:60,s:1}];
+const E=[
+  {n:"Aurora Festival 2026",c:"Shows",city:"Belo Horizonte",l:"Esplanada do Mineirão",d:"18 Out",p:189,s:2},
+  {n:"Noite de Jazz",c:"Shows",city:"Juiz de Fora",l:"Cine-Theatro Central",d:"20 Out",p:90,s:3},
+  {n:"Hamlet — Temporada",c:"Teatro",city:"Belo Horizonte",l:"Palácio das Artes",d:"24 Out",p:70,s:4},
+  {n:"Cine ao Ar Livre",c:"Cinema",city:"Juiz de Fora",l:"Parque Halfeld",d:"26 Out",p:35,s:5},
+  {n:"Eletro Sunset",c:"Festas",city:"Rio de Janeiro",l:"Pier Mauá",d:"02 Nov",p:70,s:6},
+  {n:"Rock na Praça",c:"Shows",city:"Belo Horizonte",l:"Praça da Estação",d:"09 Nov",p:60,s:1},
+  {n:"Stand-Up Comedy Night",c:"Teatro",city:"Juiz de Fora",l:"Teatro Pró-Música",d:"15 Nov",p:50,s:3},
+  {n:"Baile Funk do Rio",c:"Festas",city:"Rio de Janeiro",l:"Fundição Progresso",d:"22 Nov",p:90,s:6},
+  {n:"Sertanejo Universitário",c:"Shows",city:"Juiz de Fora",l:"Cultural Bar",d:"28 Nov",p:80,s:2},
+  {n:"Mostra de Cinema Independente",c:"Cinema",city:"Belo Horizonte",l:"Cine Belas Artes",d:"05 Dez",p:30,s:5}
+];
 const $=s=>document.querySelector(s),R=n=>'R$ '+n.toFixed(2).replace('.',',');
 let sel=0,q=[0,0,0],F={c:'Todos',o:0,m:200,q:''},cp=0,tm=600;
 const T=e=>[["Pista",e.p,"Acesso à área geral"],["Pista Premium",Math.round(e.p*1.8),"Área próxima ao palco"],["Camarote",Math.round(e.p*3.2),"Open bar e área reservada"]];
