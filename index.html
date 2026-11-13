@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Palco — Ingressos</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Anton&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff;--sf:#f5f5f7;--ink:#1d1d1f;--mu:#6e6e73;--ln:rgba(0,0,0,.1);--bl:#0071e3;--gl:rgba(255,255,255,.78);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -128,25 +128,142 @@ select{height:36px;border-radius:8px;border:1px solid var(--ln);background:var(-
 .ok{width:76px;height:76px;border-radius:50%;background:#16a34a;display:grid;place-items:center;margin:0 auto 24px}
 .au{max-width:420px;margin:56px auto 80px;padding:36px}
 .lk{background:none;border:0;color:var(--bl);cursor:pointer;font:inherit;padding:0}.sw{text-align:center;font-size:14px;color:var(--mu);margin-top:18px;line-height:2}
-.tix{display:grid;grid-template-columns:200px 1fr 170px;overflow:hidden;margin-bottom:18px}.tix .ph{aspect-ratio:auto;min-height:190px;--ch:40px;border-radius:0}
-.tix .mid{padding:22px 26px;border-right:2px dashed var(--ln)}.tix .qr{padding:18px;display:grid;place-items:center;gap:6px;cursor:pointer}
-.q{width:110px;height:110px;border-radius:8px;display:block}.bg{font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px;background:rgba(10,71,245,.1);color:var(--bl)}
-.bg.g{background:rgba(48,209,88,.15);color:#1a9b4b}.bg.o{background:rgba(255,159,10,.16);color:#b86e00}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-size:14px;z-index:110;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.md{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:100;display:grid;place-items:center;cursor:pointer}.md>div{background:#fff;color:#000;border-radius:14px;padding:28px;text-align:center}.md .q{width:min(70vw,280px);height:auto;margin:0 auto}
-.st{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.sk{padding:24px}.sk small{color:var(--mu);font-size:14px}.sk b{display:block;font-size:34px;letter-spacing:-.04em;font-weight:700}
-.ch{display:flex;align-items:flex-end;gap:10px;height:190px}.ch div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;font-size:12px;color:var(--mu)}.ch i{width:100%;background:linear-gradient(#5a8dff,#0a47f5);border-radius:6px 6px 0 0}
-.tw{overflow-x:auto;padding:8px 14px}.tb{width:100%;border-collapse:collapse;font-size:14px}.tb th{text-align:left;color:var(--mu);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--ln);font-size:12px;letter-spacing:.04em;text-transform:uppercase}.tb td{padding:14px 12px;border-bottom:1px solid var(--ln)}
-.ac{background:none;border:0;color:var(--bl);cursor:pointer;font:inherit;font-size:13px;padding:0 6px}.ac.d{color:#ff3b30}
-.stp{display:flex;gap:8px;margin-bottom:20px}.stp span{flex:1;height:4px;border-radius:2px;background:var(--ln)}.stp span.on{background:var(--bl)}
-.lt3{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;align-items:end;margin-bottom:12px}
-.ck{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.sc{aspect-ratio:1;max-width:420px;border-radius:28px;background:#0b0b0d;position:relative;overflow:hidden;display:grid;place-items:center;color:#fff}.sc::before{content:"";position:absolute;inset:12%;border:2px solid rgba(255,255,255,.35);border-radius:20px}.sc i{position:absolute;left:14%;right:14%;height:2px;background:#5a8dff;box-shadow:0 0 18px #5a8dff;animation:sn 2.4s ease-in-out infinite}@keyframes sn{0%,100%{top:16%}50%{top:82%}}
-.pb{height:8px;background:var(--ln);border-radius:4px;margin-top:12px;overflow:hidden}.pb i{display:block;height:100%;background:var(--bl);transition:width .4s}
-.rs{border-radius:20px;padding:18px 22px;margin-top:18px}.rs b{font-size:19px}.rs p{font-size:14px}.rs.ok{background:rgba(48,209,88,.14);color:#1a9b4b}.rs.us{background:rgba(255,159,10,.16);color:#b86e00}.rs.bad{background:rgba(255,59,48,.14);color:#d70015}
-.sin{height:40px;border-radius:8px;border:1px solid var(--ln);background:var(--bg);color:var(--ink);padding:0 14px;font:inherit;flex:1;min-width:200px;max-width:340px}
-.tg{width:50px;height:30px;border-radius:15px;border:0;background:var(--ln);position:relative;cursor:pointer;transition:background .2s;flex:none}.tg::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}.tg.on{background:#30d158}.tg.on::after{transform:translateX(20px)}
-.md>div .chip{color:#000;background:#eee}
+
+/* ===== ESTILOS ADAPTADOS DO INGRESSO 3D (Palco Theme) ===== */
+.ticket-showcase-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 40px;
+}
+
+.ticket-wrapper {
+  --t-bg: #161a26;
+  --t-bg-light: #202638;
+  --t-accent: #0a47f5;
+  --t-accent-glow: rgba(10, 71, 245, 0.4);
+  --t-text-main: #f8fafc;
+  --t-text-muted: #94a3b8;
+  font-size: 11px;
+  perspective: 1000px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.ticket {
+  position: relative;
+  width: 24em;
+  color: var(--t-text-main);
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  background: transparent;
+  filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+.ticket-wrapper:hover .ticket {
+  transform: rotateX(5deg) rotateY(-8deg) scale(1.02);
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(10, 71, 245, 0.2), -5px -5px 20px var(--t-accent-glow);
+}
+
+.ticket::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1em;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.15) 45%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0.15) 55%, transparent 60%, transparent 100%);
+  z-index: 10;
+  background-size: 250% 250%;
+  background-position: 100% 100%;
+  transition: background-position 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  mix-blend-mode: overlay;
+}
+
+.ticket-wrapper:hover .ticket::after {
+  background-position: 0% 0%;
+}
+
+.t-main {
+  padding: 2.2em;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at bottom left, transparent 1.1em, var(--t-bg) 1.15em), radial-gradient(circle at bottom right, transparent 1.1em, var(--t-bg) 1.15em);
+  background-size: 51% 100%;
+  background-position: bottom left, bottom right;
+  background-repeat: no-repeat;
+  border-top-left-radius: 1.2em;
+  border-top-right-radius: 1.2em;
+}
+
+.t-main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(10, 71, 245, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(10, 71, 245, 0.12) 1px, transparent 1px);
+  background-size: 2em 2em;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  transform: perspective(500px) rotateX(20deg) scale(1.5);
+  animation: grid-scroll 20s linear infinite;
+}
+
+@keyframes grid-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4em; }
+}
+
+.t-content { position: relative; z-index: 1; }
+.t-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.8em; }
+.t-logo { display: flex; align-items: center; gap: 0.5em; font-weight: 900; font-size: 1.2em; letter-spacing: -0.05em; color: #fff; font-style: italic; }
+.t-logo svg { width: 1.5em; height: 1.5em; fill: var(--t-accent); filter: drop-shadow(0 0 5px var(--t-accent)); animation: logo-pulse 3s ease-in-out infinite alternate; }
+
+@keyframes logo-pulse {
+  0% { filter: drop-shadow(0 0 2px var(--t-accent)); }
+  100% { filter: drop-shadow(0 0 10px var(--t-accent)) brightness(1.2); }
+}
+
+.t-type { font-size: 0.65em; text-transform: uppercase; letter-spacing: 0.2em; color: #fff; background: var(--t-accent); padding: 0.4em 0.9em; border-radius: 99em; font-weight: 700; box-shadow: 0 0 10px var(--t-accent-glow); }
+.t-title { font-size: 2.2em; font-weight: 900; line-height: 1.1; margin-bottom: 0.2em; text-transform: uppercase; background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.t-subtitle { color: var(--t-text-muted); font-size: 0.85em; margin-bottom: 2em; text-transform: uppercase; letter-spacing: 0.05em; }
+.t-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin-bottom: 0.5em; }
+.t-detail-item { display: flex; flex-direction: column; gap: 0.2em; }
+.t-label { font-size: 0.6em; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-text-muted); }
+.t-value { font-size: 1.05em; font-weight: 700; color: var(--t-text-main); }
+.t-perforation { display: flex; justify-content: space-between; height: 1em; align-items: center; position: relative; z-index: 2; }
+.t-perf-line { flex-grow: 1; height: 0; border-top: 2px dashed rgba(255, 255, 255, 0.2); margin: 0 1.5em; }
+
+.t-stub {
+  padding: 2em 2.2em;
+  background: radial-gradient(circle at top left, transparent 1.1em, var(--t-bg-light) 1.15em), radial-gradient(circle at top right, transparent 1.1em, var(--t-bg-light) 1.15em);
+  background-size: 51% 100%;
+  background-position: top left, top right;
+  background-repeat: no-repeat;
+  border-bottom-left-radius: 1.2em;
+  border-bottom-right-radius: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.t-barcode-container { display: flex; flex-direction: column; gap: 0.5em; }
+.t-barcode {
+  width: 10em; height: 2.8em;
+  background: repeating-linear-gradient(90deg, #fff 0, #fff 2px, transparent 2px, transparent 4px, #fff 4px, #fff 5px, transparent 5px, transparent 8px, #fff 8px, #fff 12px, transparent 12px, transparent 15px, #fff 15px, #fff 16px, transparent 16px, transparent 18px);
+  opacity: 0.85;
+}
+.t-barcode-id { font-family: monospace; font-size: 0.7em; color: var(--t-text-muted); letter-spacing: 0.15em; }
+.t-admit { text-align: right; }
+.t-admit-text { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-text-muted); }
+.t-admit-num { font-size: 2.5em; font-weight: 900; line-height: 1; color: var(--bl); text-shadow: 0 0 15px var(--t-accent-glow); }
+
+/* Fim estilos do ingresso 3D */
+
 footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:var(--mu)}
 
 /* Theme variables */
@@ -172,7 +289,7 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
 
 @media(max-width:1100px){.top-label{display:none}.top-item{padding:0 8px}}
 @media(max-width:980px){.gr{grid-template-columns:repeat(2,1fr)}.dl,.cl,.ck,.st{grid-template-columns:1fr}.box,.sm{position:static}}
-@media(max-width:700px){.cg{grid-template-columns:repeat(2,1fr)}.car{height:380px}.ar{display:none}.cta2{padding:28px 24px}.nv{height:60px}.tix{grid-template-columns:1fr}.tix .mid{border-right:0;border-bottom:2px dashed var(--ln)}.tix .ph{min-height:120px}.r2{grid-template-columns:1fr}}
+@media(max-width:700px){.cg{grid-template-columns:repeat(2,1fr)}.car{height:380px}.ar{display:none}.cta2{padding:28px 24px}.nv{height:60px}.r2{grid-template-columns:1fr}}
 @media(max-width:560px){.w{padding:0 18px}.gr{grid-template-columns:1fr}.it{grid-template-columns:72px 1fr}.it>div:last-child{grid-column:1/-1}.lt3{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -248,15 +365,15 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
 <footer><div class="w">© 2026 Palco · Projeto de portfólio. Pagamentos simulados. · <a href="#/painel" style="color:var(--bl)">Organizar eventos</a></div></footer>
 
 <script>
-/* 22 Eventos com URLs de imagens exclusivas e garantidas sem nenhuma repetição */
+/* 22 Eventos com imagens exclusivas e testadas */
 const E=[
   {n:"Aurora Festival 2026",c:"Shows",city:"Belo Horizonte",l:"Esplanada do Mineirão",d:"18 Out",p:189,img:"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80"},
   {n:"Noite de Jazz",c:"Shows",city:"Juiz de Fora",l:"Cine-Theatro Central",d:"20 Out",p:90,img:"https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80"},
-  {n:"Hamlet — Temporada",c:"Teatro",city:"Belo Horizonte",l:"Palácio das Artes",d:"24 Out",p:70,img:"https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80"},
+  {n:"Hamlet — Temporada",c:"Teatro",city:"Belo Horizonte",l:"Palácio das Artes",d:"24 Out",p:70,img:"https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80"},
   {n:"Cine ao Ar Livre",c:"Cinema",city:"Juiz de Fora",l:"Parque Halfeld",d:"26 Out",p:35,img:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80"},
   {n:"Eletro Sunset",c:"Festas",city:"Rio de Janeiro",l:"Pier Mauá",d:"02 Nov",p:70,img:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80"},
   {n:"Rock na Praça",c:"Shows",city:"Belo Horizonte",l:"Praça da Estação",d:"09 Nov",p:60,img:"https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"},
-  {n:"Stand-Up Comedy Night",c:"Teatro",city:"Juiz de Fora",l:"Teatro Pró-Música",d:"15 Nov",p:50,img:"https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80"},
+  {n:"Stand-Up Comedy Night",c:"Teatro",city:"Juiz de Fora",l:"Teatro Pró-Música",d:"15 Nov",p:50,img:"https://images.unsplash.com/photo-1585699324551-f6c309ef6750?auto=format&fit=crop&w=1200&q=80"},
   {n:"Baile Funk do Rio",c:"Festas",city:"Rio de Janeiro",l:"Fundição Progresso",d:"22 Nov",p:90,img:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80"},
   {n:"Sertanejo Universitário",c:"Shows",city:"Juiz de Fora",l:"Cultural Bar",d:"28 Nov",p:80,img:"https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80"},
   {n:"Mostra de Cinema Independente",c:"Cinema",city:"Belo Horizonte",l:"Cine Belas Artes",d:"05 Dez",p:30,img:"https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80"},
@@ -293,7 +410,7 @@ const listing=()=>`<div class="w pg"><h1>Eventos</h1><div class="bar"><div class
 function grid(){let L=E.map((e,i)=>[e,i]).filter(([e])=>(F.c=='Todos'||e.c==F.c)&&e.p<=F.m&&(!F.q||(e.n+' '+e.l+' '+e.city).toLowerCase().includes(F.q.toLowerCase())));if(F.o==1)L.sort((a,b)=>a[0].p-b[0].p);if(F.o==2)L.sort((a,b)=>b[0].p-a[0].p);$('#res').textContent=L.length+' eventos';$('#gr').innerHTML=L.length?L.map(([e,i])=>card(e,i)).join(''):'<p class="empty">Nenhum evento encontrado com esses filtros.</p>'}
 const tix=()=>T(E[sel]).map((t,i)=>`<div class="tk"><div><b>${t[0]}</b><small>${t[2]} · ${R(t[1])}</small></div><div class="qt"><button onclick="st(${i},-1)" aria-label="Menos">−</button><span>${q[i]}</span><button onclick="st(${i},1)" aria-label="Mais">+</button></div></div>`).join('')+`<div class="tt"><span>Total</span><span>${R(sub())}</span></div>`;
 function st(i,d){const was=q.some(x=>x);q[i]=Math.max(0,Math.min(8,q[i]+d));if(!was&&q.some(x=>x))tm=600;$('#tx').innerHTML=tix();bag()}
-const detail=()=>{const e=E[sel];return`<header class="ph dh" style="background-image:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)),url('${e.img}')"><div class="w in"><p class="eb">${e.c} · ${e.d}</p><h1>${e.n}</h1><div class="mt"><span>${e.l}, ${e.city}</span><span>20h · Abertura 18h</span><span>Classificação: 16 anos</span></div></div></header>
+const detail=()=>{const e=E[sel];return`<header class="ph dh" style="background-image:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)),url('${e.img}')"><div class="w in"><p class="eb">${e.c} · ${e.d} · ${e.city}</p><h1>${e.n}</h1><div class="mt"><span>${e.l}</span><span>20h · Abertura 18h</span><span>Classificação: 16 anos</span></div></div></header>
 <div class="w dl"><div><h3>Sobre o evento</h3><p>Uma noite pensada em cada detalhe: som de alta fidelidade, iluminação cênica e uma estrutura que coloca você perto de quem importa. Entrada por QR Code, sem fila.</p><h3>Programação</h3><div class="lu">Abertura dos portões<span>18:00</span></div><div class="lu">Atração principal<span>20:00</span></div><div class="lu">Encerramento<span>23:30</span></div><h3>Local</h3><div class="map"><div><i></i>${e.l}<br><small style="color:var(--mu);font-weight:400">${e.city}</small></div></div></div>
 <aside class="box"><h3>Ingressos</h3><div id="tx">${tix()}</div><button class="btn w100" onclick="sub()?location.hash='#/carrinho':toast('Escolha ao menos 1 ingresso')">Comprar ingresso</button></aside></div>`};
 const cart=()=>{const e=E[sel],s=sub(),n=q.reduce((a,b)=>a+b,0),d=s*cp,f=s*.1;
@@ -304,26 +421,88 @@ function cq(i,d){q[i]=Math.max(1,Math.min(8,q[i]+d));bag();$('#app').innerHTML=c
 function bag(){const n=q.reduce((a,b)=>a+b,0);const b=$('#bc');if(b){b.textContent=n;b.style.display=n?'block':'none'}}
 setInterval(()=>{if(tm>0){tm--;if(!tm&&q.some(x=>x)){q=[0,0,0];cp=0;bag();toast('Reserva expirada. Escolha seus ingressos novamente.');if(/carrinho|checkout/.test(location.hash))$('#app').innerHTML=cart()}}const t=$('#tmr');if(t)t.textContent=Math.floor(tm/60)+':'+String(tm%60).padStart(2,'0')},1000);
 let U=null,O=[],LO=null,pm=0,am=0,ab='up';
-const qr=s=>{let h=5381,p='';for(const c of s)h=(h*33+c.charCodeAt(0))>>>0;
-for(let y=0;y<21;y++)for(let x=0;x<21;x++){let on;const c=[[0,0],[14,0],[0,14]].find(o=>x>=o[0]-1&&x<=o[0]+7&&y>=o[1]-1&&y<=o[1]+7);
-if(c){const a=x-c[0],b=y-c[1];on=a>=0&&a<=6&&b>=0&&b<=6&&(a%6==0||b%6==0||(a>=2&&a<=4&&b>=2&&b<=4))}else{h=(h*1103515245+12345)>>>0;on=(h>>>16)&1}
-if(on)p+='M'+x+' '+y+'h1v1h-1z'}
-return`<svg class="q" viewBox="-2 -2 25 25"><rect x="-2" y="-2" width="25" height="25" fill="#fff"/><path d="${p}" fill="#000"/></svg>`};
+
+/* Função construtora do Ticket 3D personalizado com a cara do site PALCO */
+const render3DTicket = (ticketData) => {
+  const ev = E[ticketData.e] || E[0];
+  const seatNum = ticketData.seat || Math.floor(Math.random() * 50) + 1;
+  const userName = U && U !== 'Visitante' ? U : (ticketData.name || 'Convidado Palco');
+  
+  return `
+    <div class="ticket-wrapper">
+      <div class="ticket">
+        <div class="t-main">
+          <div class="t-content">
+            <div class="t-header">
+              <div class="t-logo">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                PALCO
+              </div>
+              <div class="t-type">${ticketData.t || 'VIP PASS'}</div>
+            </div>
+            <div class="t-title">${ev.n}</div>
+            <div class="t-subtitle">${ev.l} · ${ev.city}</div>
+            <div class="t-details">
+              <div class="t-detail-item">
+                <span class="t-label">Titular</span><span class="t-value">${userName}</span>
+              </div>
+              <div class="t-detail-item">
+                <span class="t-label">Data</span><span class="t-value">${ev.d}, 2026</span>
+              </div>
+              <div class="t-detail-item">
+                <span class="t-label">Local</span><span class="t-value">${ev.city}</span>
+              </div>
+              <div class="t-detail-item">
+                <span class="t-label">Acesso</span><span class="t-value">Setor Principal</span>
+              </div>
+            </div>
+          </div>
+          <div class="t-perforation" style="position: absolute; bottom: 0; left: 0; width: 100%; transform: translateY(50%);">
+            <div class="t-perf-line" />
+          </div>
+        </div>
+        <div class="t-stub">
+          <div class="t-barcode-container">
+            <div class="t-barcode" />
+            <div class="t-barcode-id">${ticketData.id || 'PLC-77-9X04'}</div>
+          </div>
+          <div class="t-admit">
+            <div class="t-admit-text">Assento</div>
+            <div class="t-admit-num">${seatNum}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
 function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2300)}
-function zoom(id){const m=document.createElement('div');m.className='md';m.onclick=()=>m.remove();m.innerHTML='<div>'+qr(id)+'<p style="margin-top:12px;font-weight:600">'+id+'</p><small>Toque para fechar</small></div>';document.body.appendChild(m)}
+function zoom(id){
+  const tObj = O.find(x => x.id === id) || { id: id, e: 0, t: 'Pista', s: 'up' };
+  const m=document.createElement('div');m.className='md';m.onclick=()=>m.remove();
+  m.innerHTML='<div style="background:transparent;padding:0;box-shadow:none">'+render3DTicket(tObj)+'<p style="margin-top:20px;font-weight:600;color:#fff">'+id+'</p><small style="color:#aaa">Toque em qualquer lugar para fechar</small></div>';
+  document.body.appendChild(m)
+}
+
 const pmh=()=>pm==0?'<p style="color:var(--mu)">Aprovação instantânea. Pagamento simulado neste projeto de portfólio.</p>':pm==1?'<div class="fm"><label class="fl">Número do cartão<input required inputmode="numeric" placeholder="0000 0000 0000 0000" minlength="16"></label><div class="r2"><label class="fl">Validade<input required placeholder="MM/AA"></label><label class="fl">CVV<input required inputmode="numeric" placeholder="123" minlength="3"></label></div></div>':'<p style="color:var(--mu)">O boleto vence em 2 dias úteis. Os ingressos são liberados após a compensação.</p>';
 const checkout=()=>{const e=E[sel],s=sub(),n=q.reduce((a,b)=>a+b,0),d=s*cp,f=s*.1;if(!n)return cart();
 return`<div class="w pg"><h1>Pagamento</h1></div><div class="w cl"><form id="ck" onsubmit="pay(event)"><div class="cd"><h3>Seus dados</h3><div class="fm"><label class="fl">Nome completo<input name="n" required autocomplete="name" value="${U&&U!='Visitante'?U:''}"></label><div class="r2"><label class="fl">CPF<input required inputmode="numeric" placeholder="000.000.000-00" minlength="11"></label><label class="fl">E-mail<input type="email" required autocomplete="email"></label></div></div></div>
 <div class="cd"><h3>Forma de pagamento</h3><div class="seg">${['Pix','Cartão','Boleto'].map((x,i)=>`<button type="button" class="${pm==i?'on':''}" onclick="pm=${i};$('#pm').innerHTML=pmh();this.parentNode.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j==${i}))">${x}</button>`).join('')}</div><div id="pm" style="margin-top:20px">${pmh()}</div></div></form>
 <aside class="sm"><h3 style="font-size:21px;margin-bottom:4px">${e.n}</h3><p style="color:var(--mu);margin-bottom:12px">${e.d} · ${e.city}</p>${T(e).map((t,i)=>q[i]?`<div class="ln"><span>${q[i]}× ${t[0]}</span><span>${R(t[1]*q[i])}</span></div>`:'').join('')}<div class="ln"><span>Taxa de serviço</span><span>${R(f)}</span></div>${cp?`<div class="ln g"><span>Cupom PALCO10</span><span>−${R(d)}</span></div>`:''}<div class="tt" style="border-top:1px solid var(--ln);margin-top:8px"><span>Total</span><span>${R(s+f-d)}</span></div><button class="btn w100" form="ck" id="pb">Finalizar compra</button></aside></div>`};
+
 function pay(e){e.preventDefault();const b=$('#pb'),nm=e.target.elements.n.value;b.textContent='Processando…';b.disabled=true;
 setTimeout(()=>{const code=Math.random().toString(36).slice(2,7).toUpperCase(),ev=E[sel],s=sub();let fid='',cnt=0;
-T(ev).forEach((t,i)=>{for(let k=0;k<q[i];k++){const id='PLC-'+code+i+k;if(!fid)fid=id;cnt++;O.unshift({id,e:sel,t:t[0],s:'up'})}});
+T(ev).forEach((t,i)=>{for(let k=0;k<q[i];k++){const id='PLC-'+code+i+k;if(!fid)fid=id;cnt++;O.unshift({id,e:sel,t:t[0],s:'up',name:nm,seat:Math.floor(Math.random()*40)+1})}});
 LO={id:code,e:sel,n:cnt,tot:s*1.1-s*cp,fid};OR.unshift(LO);q=[0,0,0];cp=0;tm=600;if(!U)U=nm.split(' ')[0];location.hash='#/confirmacao'},1300)}
+
 const conf=()=>{if(!LO)return home();const e=E[LO.e];
-return`<div class="w" style="max-width:640px;text-align:center;padding:72px 24px 90px"><div class="ok"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div><h1 style="font-size:clamp(34px,5vw,52px);margin:0 auto 12px;max-width:none">Compra confirmada</h1><p style="color:var(--mu);font-size:18px">Pedido <b style="color:var(--ink)">#${LO.id}</b> · Enviamos os ingressos para o seu e-mail.</p>
-<div class="cd" style="margin:36px 0;text-align:left;display:flex;gap:20px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:200px"><h4 style="font-size:19px">${e.n}</h4><p style="color:var(--mu)">${e.d} · ${e.l}, ${e.city}</p><p style="margin-top:10px">${LO.n} ingresso(s) · <b>${R(LO.tot)}</b></p></div>${qr(LO.fid)}</div>
+const sampleT = O.find(x => x.id === LO.fid) || { id: LO.fid, e: LO.e, t: 'VIP', s: 'up', name: U || 'Convidado', seat: 42 };
+return`<div class="w" style="max-width:720px;text-align:center;padding:72px 24px 90px"><div class="ok"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div><h1 style="font-size:clamp(34px,5vw,52px);margin:0 auto 12px;max-width:none">Compra confirmada</h1><p style="color:var(--mu);font-size:18px">Pedido <b style="color:var(--ink)">#${LO.id}</b> · Seus ingressos 3D já estão disponíveis na sua aba de ingressos!</p>
+<div style="margin:40px 0;display:flex;justify-content:center;">${render3DTicket(sampleT)}</div>
 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#/ingressos">Ver meus ingressos</a><a class="btn" style="background:var(--sf);color:var(--ink)" href="#/">Voltar à home</a></div></div>`};
+
 const auth=()=>{const t=['Entrar','Criar conta','Recuperar senha'];
 return`<div class="au"><h1 style="font-size:32px;margin:0 0 6px;text-align:left">${t[am]}</h1><p style="color:var(--mu);margin-bottom:22px">${am==2?'Enviaremos um link para o seu e-mail.':'Acesse seus ingressos em qualquer lugar.'}</p>
 <form class="fm" onsubmit="login(event)" autocomplete="off">${am==1?'<label class="fl">Nome<input name="n" required autocomplete="off"></label>':''}<label class="fl">E-mail<input name="m" type="email" required autocomplete="off"></label>${am==2?'':'<label class="fl">Senha<input type="password" required minlength="6" autocomplete="new-password"></label>'}<button class="btn w100">${am==2?'Enviar link':t[am]}</button></form>
@@ -332,9 +511,29 @@ ${am==2?'':'<button class="btn w100" style="background:var(--bg);color:var(--ink
 function sw(i){am=i;$('#app').innerHTML=auth()}
 function guest(){U='Visitante';location.hash='#/ingressos'}
 function login(e){e.preventDefault();if(am==2){toast('Link enviado! Confira seu e-mail.');sw(0);return}const f=e.target;U=f.elements.n?f.elements.n.value.split(' ')[0]:f.elements.m.value.split('@')[0];location.hash='#/ingressos'}
-const mine=()=>{const L=O.filter(t=>t.s==ab);
-return`<div class="w pg"><h1>Meus ingressos</h1><div class="bar"><div class="ct">${[['up','Próximos'],['past','Passados'],['can','Cancelados']].map(x=>`<button class="chip ${ab==x[0]?'on':''}" onclick="ab='${x[0]}';$('#app').innerHTML=mine()">${x[1]} (${O.filter(t=>t.s==x[0]).length})</button>`).join('')}</div></div>
-${L.length?L.map(t=>{const e=E[t.e];return`<div class="tix" style="${t.s!='up'?'opacity:.6':''}"><div class="ph" style="background-image:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.65)),url('${e.img}')"></div><div class="mid"><h4 style="font-size:20px;font-weight:700;letter-spacing:-.03em">${e.n}</h4><p style="color:var(--mu)">${e.d} · ${e.l}, ${e.city}</p><p style="margin:10px 0 14px"><span class="bg">${t.t}</span></p><div class="ct"><button class="chip" onclick="toast('Download iniciado (simulado)')">Baixar</button><button class="chip" onclick="toast('Link de transferência copiado')">Transferir</button></div></div><div class="qr" onclick="zoom('${t.id}')">${qr(t.id)}<small style="color:var(--mu)">${t.id}</small></div></div>`}).join(''):'<p class="empty">Nenhum ingresso aqui.</p>'}</div>`};
+
+/* ABA DE INGRESSOS MODIFICADA COM O NOVO EFEITO 3D / SHOWCASE */
+const mine=()=>{
+  // Se o usuário ainda não comprou nenhum ingresso, mostramos um ingresso showcase de demonstração para ornamentar o site!
+  const L = O.filter(t=>t.s==ab);
+  const demoTickets = L.length ? L : [
+    { id: 'PLC-DEMO-26', e: 0, t: 'DEV PASS', s: 'up', name: U && U !== 'Visitante' ? U : 'JC Developer', seat: 42 }
+  ];
+
+  return `<div class="w pg">
+    <h1>Meus Ingressos</h1>
+    <div class="bar">
+      <div class="ct">
+        ${[['up','Próximos'],['past','Passados'],['can','Cancelados']].map(x=>`<button class="chip ${ab==x[0]?'on':''}" onclick="ab='${x[0]}';$('#app').innerHTML=mine()">${x[1]} (${O.filter(t=>t.s==x[0]).length})</button>`).join('')}
+      </div>
+    </div>
+    ${!L.length ? '<p style="color:var(--mu);margin-bottom:20px;text-align:center">Exibindo modelo em destaque (você ainda não adquiriu ingressos reais nesta sessão). Compre um evento para gerar o seu passe oficial!</p>' : ''}
+    <div class="ticket-showcase-container">
+      ${demoTickets.map(t => render3DTicket(t)).join('')}
+    </div>
+  </div>`;
+};
+
 let FV=new Set(),NT=true,PR={m:''},DP=7,CR=null,PF={q:'',s:''},EF=null;
 let OR=[];
 let ME=[{n:'Aurora Festival 2026',c:'Shows',ds:'Três dias, quatro palcos.',d:'2026-10-18',h:'18:00',loc:'Esplanada do Mineirão',city:'Belo Horizonte',st:'Publicado',sold:842,lots:[{n:'Pista',p:189,q:1000},{n:'Premium',p:340,q:400},{n:'Camarote',p:605,q:100}]},{n:'Noite de Jazz',c:'Shows',ds:'',d:'2026-10-20',h:'20:00',loc:'Cine-Theatro Central',city:'Juiz de Fora',st:'Publicado',sold:310,lots:[{n:'Pista',p:90,q:400}]},{n:'Eletro Sunset',c:'Festas',ds:'',d:'2026-11-02',h:'17:00',loc:'Pier Mauá',city:'Rio de Janeiro',st:'Rascunho',sold:0,lots:[{n:'Pista',p:70,q:800}]},{n:'Cine ao Ar Livre',c:'Cinema',ds:'',d:'2026-10-26',h:'19:30',loc:'Parque Halfeld',city:'Juiz de Fora',st:'Pausado',sold:128,lots:[{n:'Pista',p:35,q:300}]}];
@@ -533,7 +732,7 @@ function go(){
 
 function renderPageContent() {
   const h=location.hash.split('/'),v=h[1]||'',A=$('#app');
-  if(v=='eventos'){A.innerHTML=listing();grid()}else if(v=='evento'){const n=+h[2]||0;if(n!=sel){sel=n;q=[0,0,0];cp=0}A.innerHTML=detail()}else if(v=='carrinho')A.innerHTML=cart();else if(v=='checkout')A.innerHTML=checkout();else if(v=='confirmacao')A.innerHTML=conf();else if(v=='entrar')A.innerHTML=auth();else if(v=='ingressos')A.innerHTML=mine();else if(v=='favoritos')A.innerHTML=favs();else if(v=='perfil')A.innerHTML=U?prof():auth();else if(v=='painel')A.innerHTML=panel(h[2],h[3]);else A.innerHTML=home();
+  if(v=='eventos'){A.innerHTML=listing();grid()}else if(v=='evento'){const n=+h[2]||0;if(n!=sel){sel=n;q=[0,0,0];cp=0}A.innerHTML=detail()}else if(v=='carrinho')A.innerHTML=cart();else if(v=='checkout')A.innerHTML=checkout();else if(v=='confirmacao')A.innerHTML=conf();else if(v=='entrar')A.innerHTML=auth();else if(v== 'ingressos')A.innerHTML=mine();else if(v=='favoritos')A.innerHTML=favs();else if(v=='perfil')A.innerHTML=U?prof():auth();else if(v=='painel')A.innerHTML=panel(h[2],h[3]);else A.innerHTML=home();
   syncTopDockActive(v, location.hash);
   if(v=='painel'&&h[2]=='participantes')prow();bag();const u=$('#ub');u.textContent=U?'Meus ingressos':'Entrar';u.setAttribute('href',U?'#/ingressos':'#/entrar');scrollTo(0,0);
 }
