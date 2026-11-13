@@ -1,37 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="utf-8">
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Palco — Ingressos</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Anton&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff;--sf:#f5f5f7;--ink:#1d1d1f;--mu:#6e6e73;--ln:rgba(0,0,0,.1);--bl:#0071e3;--gl:rgba(255,255,255,.78);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.011em;padding-bottom:96px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.011em;padding-bottom:48px}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
 .w{max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* Top Navbar */
-nav.top-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);color:#fff}
-.nv{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
-.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-style:italic;font-size:25px;letter-spacing:-.04em;color:#fff}.logo svg{width:24px;height:24px}
-.links{display:flex;gap:28px;font-size:14px;font-weight:500;color:rgba(255,255,255,.85)}.links a:hover,.links a.on{color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;border-radius:8px;border:0;background:var(--bl);color:#fff;font-weight:600;font-size:15px;cursor:pointer;transition:filter .2s,transform .15s}
-.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.97)}.btn.w100{width:100%;height:50px}
-.nv .btn{background:#fff;color:var(--hd);height:36px;padding:0 16px;font-size:14px;border-radius:999px}
+/* Top Navbar with Integrated Animated/Magnetic Icons */
+nav.top-nav{position:sticky;top:0;z-index:90;background:rgba(10,61,240,0.92);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid rgba(255,255,255,0.15);color:#fff}
+:root[data-theme=dark] nav.top-nav{background:rgba(11,31,110,0.92);border-bottom:1px solid rgba(255,255,255,0.1)}
+.nv{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-style:italic;font-size:25px;letter-spacing:-.04em;color:#fff;flex-shrink:0}.logo svg{width:24px;height:24px}
 
-/* Originkit Magnetic Glass Dock */
-.gdock-wrap{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:90;pointer-events:none;display:flex;justify-content:center}
-.gdock-bar{pointer-events:auto;position:relative;display:flex;gap:6px;padding:7px;border-radius:30px;background:rgba(20,24,38,.78);border:1px solid rgba(255,255,255,.16);box-shadow:0 16px 40px -10px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);touch-action:pan-y;user-select:none;-webkit-user-select:none}
-:root[data-theme=light] .gdock-bar{background:rgba(22,26,38,.85);border-color:rgba(255,255,255,.2)}
-.gdock-item{position:relative;width:46px;height:46px;padding:0;border:0;border-radius:23px;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.65);transition:color .15s}
-.gdock-item:focus-visible{outline:none;box-shadow:0 0 0 2px #fff}
-.gdock-item.active,.gdock-item.near{color:#fff}
-.gdock-glyph{display:block;width:21px;height:21px;transform-origin:50% 100%;transition:transform .14s cubic-bezier(.3,.7,.4,1);will-change:transform}
-.gdock-dot{position:absolute;left:50%;bottom:4px;width:4px;height:4px;margin-left:-2px;border-radius:2px;background:#fff;opacity:0;transform:scale(.4);transition:opacity .2s,transform .2s}
-.gdock-item.active .gdock-dot{opacity:1;transform:scale(1)}
-.gdock-badge{position:absolute;top:5px;right:5px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:#ffe600;color:#111;font:700 10px/16px Inter,sans-serif;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .15s}
-.gdock-tip{position:absolute;left:0;bottom:calc(100% + 12px);height:28px;padding:0 12px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:14px;background:#f7f7f7;color:#141413;font:600 12px/1 Inter,sans-serif;letter-spacing:-.005em;white-space:nowrap;opacity:0;pointer-events:none;box-shadow:0 6px 16px rgba(0,0,0,.25)}
-.gdock-tip[data-ready]{transition:transform .22s cubic-bezier(.3,.7,.3,1),width .22s cubic-bezier(.3,.7,.3,1),opacity .15s ease}
+/* Top Magnetic Bar Container */
+.top-dock{position:relative;display:flex;gap:4px;padding:4px 8px;border-radius:24px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.14);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.top-item{position:relative;height:42px;padding:0 10px;border:0;border-radius:21px;background:transparent;display:flex;align-items:center;gap:6px;cursor:pointer;color:rgba(255,255,255,0.75);transition:color .15s}
+.top-item:focus-visible{outline:none;box-shadow:0 0 0 2px #fff}
+.top-item.active,.top-item.near{color:#fff}
+.top-glyph{display:block;width:20px;height:20px;transform-origin:50% 100%;transition:transform .14s cubic-bezier(.3,.7,.4,1);will-change:transform;flex-shrink:0}
+.top-label{font-size:13px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;transition:transform .14s cubic-bezier(.3,.7,.4,1);will-change:transform}
+.top-dot{position:absolute;left:50%;bottom:3px;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:#fff;opacity:0;transform:scale(.4);transition:opacity .2s,transform .2s}
+.top-item.active .top-dot{opacity:1;transform:scale(1)}
+.top-badge{position:absolute;top:4px;right:4px;min-width:15px;height:15px;padding:0 3px;border-radius:7.5px;background:#ffe600;color:#111;font:700 9px/15px Inter,sans-serif;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,0.3);transition:transform .15s}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 20px;border-radius:8px;border:0;background:var(--bl);color:#fff;font-weight:600;font-size:14px;cursor:pointer;transition:filter .2s,transform .15s}
+.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.97)}.btn.w100{width:100%;height:48px}
+.nv .btn{background:#fff;color:var(--hd);height:36px;padding:0 16px;font-size:14px;border-radius:999px;flex-shrink:0}
 
 /* Micro-interações nos ícones do site (Categorias, Favoritos, Setas, Quantidade) */
 .cc{display:flex;flex-direction:column;align-items:center;gap:10px;padding:26px 12px;border:1px solid var(--ln);border-radius:12px;color:var(--mu);font-weight:600;font-size:15px;transition:border-color .25s,color .25s,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
@@ -113,7 +113,7 @@ select{height:36px;border-radius:8px;border:1px solid var(--ln);background:var(-
 .tix .mid{padding:22px 26px;border-right:2px dashed var(--ln)}.tix .qr{padding:18px;display:grid;place-items:center;gap:6px;cursor:pointer}
 .q{width:110px;height:110px;border-radius:8px;display:block}.bg{font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px;background:rgba(10,71,245,.1);color:var(--bl)}
 .bg.g{background:rgba(48,209,88,.15);color:#1a9b4b}.bg.o{background:rgba(255,159,10,.16);color:#b86e00}
-.toast{position:fixed;bottom:calc(96px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-size:14px;z-index:110;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-size:14px;z-index:110;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .md{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:100;display:grid;place-items:center;cursor:pointer}.md>div{background:#fff;color:#000;border-radius:14px;padding:28px;text-align:center}.md .q{width:min(70vw,280px);height:auto;margin:0 auto}
 .st{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.sk{padding:24px}.sk small{color:var(--mu);font-size:14px}.sk b{display:block;font-size:34px;letter-spacing:-.04em;font-weight:700}
 .ch{display:flex;align-items:flex-end;gap:10px;height:190px}.ch div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;font-size:12px;color:var(--mu)}.ch i{width:100%;background:linear-gradient(#5a8dff,#0a47f5);border-radius:6px 6px 0 0}
@@ -159,51 +159,77 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
 .cg{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 .cta2{margin:56px 0;border-radius:16px;background:var(--hd);color:#fff;padding:38px 44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.cta2 h2{color:#fff;font-size:28px}.cta2 p{opacity:.85;margin-top:6px}.cta2 .btn{background:#fff;color:var(--hd)}
 
-@media(max-width:980px){.gr{grid-template-columns:repeat(2,1fr)}.dl,.cl,.ck,.st{grid-template-columns:1fr}.box,.sm{position:static}.links{display:none}}
-@media(max-width:700px){.cg{grid-template-columns:repeat(2,1fr)}.car{height:380px}.ar{display:none}.cta2{padding:28px 24px}.nv{height:56px}.tix{grid-template-columns:1fr}.tix .mid{border-right:0;border-bottom:2px dashed var(--ln)}.tix .ph{min-height:120px}.r2{grid-template-columns:1fr}}
-@media(max-width:560px){.w{padding:0 18px}.gr{grid-template-columns:1fr}.it{grid-template-columns:72px 1fr}.it>div:last-child{grid-column:1/-1}.lt3{grid-template-columns:1fr 1fr}.gdock-item{width:42px;height:42px}}
+@media(max-width:1100px){.top-label{display:none}.top-item{padding:0 8px}}
+@media(max-width:980px){.gr{grid-template-columns:repeat(2,1fr)}.dl,.cl,.ck,.st{grid-template-columns:1fr}.box,.sm{position:static}}
+@media(max-width:700px){.cg{grid-template-columns:repeat(2,1fr)}.car{height:380px}.ar{display:none}.cta2{padding:28px 24px}.nv{height:60px}.tix{grid-template-columns:1fr}.tix .mid{border-right:0;border-bottom:2px dashed var(--ln)}.tix .ph{min-height:120px}.r2{grid-template-columns:1fr}}
+@media(max-width:560px){.w{padding:0 18px}.gr{grid-template-columns:1fr}.it{grid-template-columns:72px 1fr}.it>div:last-child{grid-column:1/-1}.lt3{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style></head><body>
+</style>
+</head>
+<body>
 
 <nav class="top-nav"><div class="w nv">
 <a class="logo" href="#/"><svg viewBox="0 0 32 32" fill="none"><defs><linearGradient id="g" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#cfe0ff"/></linearGradient></defs><path d="M6 5h20a2 2 0 0 1 2 2v5a4 4 0 0 0 0 8v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5a4 4 0 0 0 0-8V7a2 2 0 0 1 2-2Z" fill="url(#g)"/><path d="M13 11.5h4.2a3 3 0 0 1 0 6H13v4" stroke="#0a3df0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Palco</a>
-<div class="links"><a href="#/eventos" onclick="F.c='Todos';F.q='';if(location.hash=='#/eventos')go()">Eventos</a><a href="#/eventos" onclick="F.c='Shows';F.q='';if(location.hash=='#/eventos')go()">Shows</a><a href="#/eventos" onclick="F.c='Teatro';F.q='';if(location.hash=='#/eventos')go()">Teatro</a><a href="#/eventos" onclick="F.c='Festas';F.q='';if(location.hash=='#/eventos')go()">Festas</a><a href="#/painel">Organizar</a></div>
+
+<!-- Integrated Magnetic Animated Nav Bar -->
+<nav class="top-dock" id="topDock" aria-label="Navegação superior">
+  <button type="button" class="top-item" data-idx="0" data-label="Início" data-route="#/" aria-label="Início">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+    <span class="top-label">Início</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="1" data-label="Eventos" data-route="#/eventos" aria-label="Eventos">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+    <span class="top-label">Eventos</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="2" data-label="Shows" data-route="#/eventos" onclick="F.c='Shows';F.q=''" aria-label="Shows">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+    <span class="top-label">Shows</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="3" data-label="Teatro" data-route="#/eventos" onclick="F.c='Teatro';F.q=''" aria-label="Teatro">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v9a7 7 0 0 1-14 0z"/><path d="M9 9h.01M15 9h.01M9 13c1 1.2 5 1.2 6 0"/></svg></span>
+    <span class="top-label">Teatro</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="4" data-label="Festas" data-route="#/eventos" onclick="F.c='Festas';F.q=''" aria-label="Festas">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.8 6.2.5-4.7 4.1 1.4 6-5.3-3.2-5.3 3.2 1.4-6-4.7-4.1 6.2-.5z"/></svg></span>
+    <span class="top-label">Festas</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="5" data-label="Favoritos" data-route="#/favoritos" aria-label="Favoritos">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
+    <span class="top-label">Favoritos</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="6" data-label="Carrinho" data-route="#/carrinho" aria-label="Carrinho">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></span>
+    <span class="top-label">Carrinho</span>
+    <i class="top-badge" id="bc">0</i>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="7" data-label="Ingressos" data-route="#/ingressos" aria-label="Meus ingressos">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></span>
+    <span class="top-label">Ingressos</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="8" data-label="Organizar" data-route="#/painel" aria-label="Organizar">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+    <span class="top-label">Organizar</span>
+    <span class="top-dot"></span>
+  </button>
+  <button type="button" class="top-item" data-idx="9" data-label="Perfil" data-route="#/perfil" aria-label="Perfil">
+    <span class="top-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+    <span class="top-label">Perfil</span>
+    <span class="top-dot"></span>
+  </button>
+</nav>
+
 <div style="display:flex;align-items:center;gap:8px"><a class="btn" id="ub" href="#/entrar">Entrar</a></div>
 </div></nav>
 
 <main id="app"></main>
-
-<!-- Floating Magnetic Dock (Originkit) -->
-<div class="gdock-wrap">
-  <nav class="gdock-bar" id="gdock" aria-label="Navegação rápida">
-    <button type="button" class="gdock-item" data-idx="0" data-label="Início" data-route="#/" aria-label="Início">
-      <span class="gdock-glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-      <span class="gdock-dot"></span>
-    </button>
-    <button type="button" class="gdock-item" data-idx="1" data-label="Explorar" data-route="#/eventos" aria-label="Explorar">
-      <span class="gdock-glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-      <span class="gdock-dot"></span>
-    </button>
-    <button type="button" class="gdock-item" data-idx="2" data-label="Favoritos" data-route="#/favoritos" aria-label="Favoritos">
-      <span class="gdock-glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
-      <span class="gdock-dot"></span>
-    </button>
-    <button type="button" class="gdock-item" data-idx="3" data-label="Carrinho" data-route="#/carrinho" aria-label="Carrinho">
-      <span class="gdock-glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></span>
-      <i class="gdock-badge" id="bc">0</i>
-      <span class="gdock-dot"></span>
-    </button>
-    <button type="button" class="gdock-item" data-idx="4" data-label="Ingressos" data-route="#/ingressos" aria-label="Meus ingressos">
-      <span class="gdock-glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></span>
-      <span class="gdock-dot"></span>
-    </button>
-    <button type="button" class="gdock-item" data-idx="5" data-label="Perfil" data-route="#/perfil" aria-label="Perfil">
-      <span class="gdock-glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-      <span class="gdock-dot"></span>
-    </button>
-    <span class="gdock-tip" id="gdock-tip" aria-hidden="true"></span>
-  </nav>
-</div>
 
 <footer><div class="w">© 2026 Palco · Projeto de portfólio. Pagamentos simulados. · <a href="#/painel" style="color:var(--bl)">Organizar eventos</a></div></footer>
 
@@ -309,7 +335,7 @@ if(t==0)b=`<div class="fm"><label class="fl">Nome do evento<input value="${esc(E
 else if(t==1)b=`<div class="fm"><div class="r2"><label class="fl">Data<input type="date" value="${EF.d}" oninput="EF.d=this.value"></label><label class="fl">Horário<input type="time" value="${EF.h}" oninput="EF.h=this.value"></label></div><label class="fl">Local<input value="${esc(EF.loc)}" oninput="EF.loc=this.value" placeholder="Ex.: Palácio das Artes"></label><label class="fl">Cidade<input value="${esc(EF.city)}" oninput="EF.city=this.value"></label></div>`;
 else if(t==2)b=EF.lots.map((l,i)=>`<div class="lt3"><label class="fl">Lote<input value="${esc(l.n)}" oninput="EF.lots[${i}].n=this.value"></label><label class="fl">Preço (R$)<input type="number" min="0" value="${l.p}" oninput="EF.lots[${i}].p=this.value"></label><label class="fl">Qtd.<input type="number" min="1" value="${l.q}" oninput="EF.lots[${i}].q=this.value"></label>${EF.lots.length>1?`<button type="button" class="ac d" onclick="EF.lots.splice(${i},1);rf()">Remover</button>`:'<span></span>'}</div>`).join('')+'<button type="button" class="chip" onclick="addLot()">+ Adicionar lote</button>';
 else{const cap=EF.lots.reduce((a,l)=>a+(+l.q||0),0),pot=EF.lots.reduce((a,l)=>a+(+l.p||0)*(+l.q||0),0);b=`<div class="lu">Evento<b>${esc(EF.n)}</b></div><div class="lu">Categoria<b>${EF.c}</b></div><div class="lu">Data<b>${fd(EF.d)} às ${EF.h}</b></div><div class="lu">Local<b>${esc(EF.loc)}, ${esc(EF.city)}</b></div>${EF.lots.map(l=>`<div class="lu">${esc(l.n)}<b>${R(+l.p||0)} · ${l.q} un.</b></div>`).join('')}<div class="lu">Capacidade<b>${cap}</b></div><div class="lu">Receita potencial<b>${R(pot)}</b></div>`}
-return`<div class="cd"><div class="stp">${L4.map((x,i)=>`<span class="${i<=t?'on':''}"></span>`).join('')}</div><h3>${t+1}. ${L4[t]}</h3>${b}<div class="ct" style="margin-top:24px">${t>0?'<button class="chip" onclick="bk()">Voltar</button>':''}<div class="sp"></div>${t<3?'<button class="btn" onclick="nx()">Próximo</button>':'<button class="chip" onclick="sv('Rascunho')">Salvar rascunho</button><button class="btn" onclick="sv('Publicado')">Publicar</button>'}</div></div>`};
+return`<div class="cd"><div class="stp">${L4.map((x,i)=>`<span class="${i<=t?'on':''}"></span>`).join('')}</div><h3>${t+1}. ${L4[t]}</h3>${b}<div class="ct" style="margin-top:24px">${t>0?'<button class="chip" onclick="bk()">Voltar</button>':''}<div class="sp"></div>${t<3?'<button class="btn" onclick="nx()">Próximo</button>':'<button class="chip" onclick="sv(\'Rascunho\')">Salvar rascunho</button><button class="btn" onclick="sv(\'Publicado\')">Publicar</button>'}</div></div>`};
 function sv(st){const m=st=='Publicado'?[0,1,2].map(vs).find(x=>x):vs(0);if(m){toast(m);return}const {id,step,...e}=EF;e.st=st;e.lots=e.lots.map(l=>({n:l.n||'Ingresso',p:+l.p||0,q:+l.q||0}));if(id>=0)ME[id]=e;else ME.unshift(e);toast(st=='Publicado'?'Evento publicado!':'Rascunho salvo.');location.hash='#/painel/eventos'}
 const cn=()=>PT.filter(p=>p.ci).length,pc=()=>Math.round(cn()/PT.length*100);
 const rsl=()=>CR?`<div class="rs ${CR.k}"><b>${CR.t}</b><p>${CR.m}</p></div>`:'';
@@ -320,24 +346,19 @@ function sim(){const a=PT.filter(p=>!p.ci),l=a.length?a:PT;ck(Math.random()<.15?
 const pts=()=>adm('participantes','Participantes','<button class="btn" onclick="csv()">Exportar CSV</button>',`<div class="bar" style="margin-top:-8px"><input class="sin" placeholder="Buscar por nome ou código" oninput="PF.q=this.value;prow()"><select onchange="PF.s=this.value;prow()"><option value="">Todos</option><option value="1">Com check-in</option><option value="0">Pendentes</option></select><span id="pcnt" style="color:var(--mu);font-size:14px"></span></div><div class="tw"><table class="tb"><tr><th>Participante</th><th>Ingresso</th><th>Código</th><th>Status</th><th></th></tr><tbody id="pr"></tbody></table></div>`);
 function prow(){const q=PF.q.toLowerCase(),L=PT.map((p,i)=>[p,i]).filter(([p])=>(!q||p.nm.toLowerCase().includes(q)||p.id.toLowerCase().includes(q))&&(PF.s==''||+p.ci==+PF.s));$('#pr').innerHTML=L.map(([p,i])=>`<tr><td><b>${p.nm}</b></td><td>${p.t}</td><td><code>${p.id}</code></td><td><span class="bg ${p.ci?'g':'o'}">${p.ci?'Check-in feito':'Pendente'}</span></td><td style="text-align:right"><button class="ac" onclick="tc(${i})">${p.ci?'Desfazer':'Check-in manual'}</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">Nenhum participante encontrado.</td></tr>';$('#pcnt').textContent=L.length+' de '+PT.length}
 function tc(i){PT[i].ci=!PT[i].ci;prow()}
-function csv(){const t='Nome,Ingresso,Codigo,Check-in
-'+PT.map(p=>[p.nm,p.t,p.id,p.ci?'Sim':'Nao'].join(',')).join('
-');const d=document.createElement('div');d.className='md';d.style.cursor='default';d.innerHTML='<div style="width:min(92vw,520px)"><p style="font-weight:600;margin-bottom:10px">Exportar CSV</p><textarea readonly rows="9" style="width:100%;border-radius:12px;border:1px solid #ddd;padding:10px;font:13px monospace;color:#000;background:#fafafa">'+t+'</textarea><div class="ct" style="justify-content:center;margin-top:14px"><button class="chip" id="cc">Copiar</button><button class="chip" id="cx">Fechar</button></div></div>';document.body.appendChild(d);d.querySelector('#cx').onclick=()=>d.remove();d.querySelector('#cc').onclick=()=>{const a=d.querySelector('textarea');a.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}toast(ok?'CSV copiado!':'Selecione o texto e copie (Ctrl+C).')}}
+function csv(){const t='Nome,Ingresso,Codigo,Check-in\n'+PT.map(p=>[p.nm,p.t,p.id,p.ci?'Sim':'Nao'].join(',')).join('\n');const d=document.createElement('div');d.className='md';d.style.cursor='default';d.innerHTML='<div style="width:min(92vw,520px)"><p style="font-weight:600;margin-bottom:10px">Exportar CSV</p><textarea readonly rows="9" style="width:100%;border-radius:12px;border:1px solid #ddd;padding:10px;font:13px monospace;color:#000;background:#fafafa">'+t+'</textarea><div class="ct" style="justify-content:center;margin-top:14px"><button class="chip" id="cc">Copiar</button><button class="chip" id="cx">Fechar</button></div></div>';document.body.appendChild(d);d.querySelector('#cx').onclick=()=>d.remove();d.querySelector('#cc').onclick=()=>{const a=d.querySelector('textarea');a.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}toast(ok?'CSV copiado!':'Selecione o texto e copie (Ctrl+C).')}}
 function gg(){toast('Login com Google é simulado. Use e-mail ou visitante.')}
 
-/* ===== Originkit Magnetic Dock Controller (Vanilla JS Port) ===== */
-(function initMagneticDock() {
-  const bar = document.getElementById('gdock');
-  const tip = document.getElementById('gdock-tip');
-  if (!bar || !tip) return;
-  const items = Array.from(bar.querySelectorAll('.gdock-item'));
-  const MAGNIFY = 1.38;
+/* ===== Originkit Top Magnetic Dock Controller (Vanilla JS Port) ===== */
+(function initTopMagneticDock() {
+  const bar = document.getElementById('topDock');
+  if (!bar) return;
+  const items = Array.from(bar.querySelectorAll('.top-item'));
+  const MAGNIFY = 1.35;
   const SPREAD = 2;
-  const LIFT = 9;
-  let hoverIdx = null;
+  const LIFT = 4;
   let isDown = false;
   let choseOnLift = false;
-  let tipReady = false;
 
   function nearestIndex(clientX) {
     let best = 0;
@@ -355,45 +376,31 @@ function gg(){toast('Login com Google é simulado. Use e-mail ou visitante.')}
   }
 
   function updateWave(idx) {
-    hoverIdx = idx;
     items.forEach((el, i) => {
       const dist = idx === null ? 99 : Math.abs(i - idx);
       const factor = dist > SPREAD ? 0 : (1 + Math.cos((Math.PI * dist) / (SPREAD + 1))) / 2;
       const scale = 1 + (MAGNIFY - 1) * factor;
       const translateY = -LIFT * factor;
-      const glyph = el.querySelector('.gdock-glyph');
-      const badge = el.querySelector('.gdock-badge');
+      const glyph = el.querySelector('.top-glyph');
+      const label = el.querySelector('.top-label');
+      const badge = el.querySelector('.top-badge');
       if (glyph) {
         glyph.style.transform = `translateY(${translateY.toFixed(2)}px) scale(${scale.toFixed(3)})`;
       }
+      if (label) {
+        label.style.transform = `translateY(${translateY.toFixed(2)}px)`;
+      }
       if (badge) {
-        badge.style.transform = `translateY(${(translateY * 0.8).toFixed(2)}px)`;
+        badge.style.transform = `translateY(${translateY.toFixed(2)}px)`;
       }
       el.classList.toggle('near', factor > 0.5);
     });
-
-    if (idx !== null && items[idx]) {
-      const target = items[idx];
-      tip.textContent = target.dataset.label || '';
-      const tipW = tip.offsetWidth;
-      const x = target.offsetLeft + target.offsetWidth / 2 - tipW / 2;
-      tip.style.transform = `translateX(${x}px)`;
-      tip.style.opacity = '1';
-      if (!tipReady) {
-        requestAnimationFrame(() => {
-          tip.setAttribute('data-ready', '1');
-          tipReady = true;
-        });
-      }
-    } else {
-      tip.style.opacity = '0';
-    }
   }
 
   function navigateDock(i) {
     const route = items[i]?.dataset.route;
     if (!route) return;
-    if (route === '#/eventos') { F.c = 'Todos'; F.q = ''; }
+    if (route === '#/eventos' && i === 1) { F.c = 'Todos'; F.q = ''; }
     if (location.hash === route || (route === '#/' && !location.hash)) {
       go();
     } else {
@@ -432,7 +439,7 @@ function gg(){toast('Login com Google é simulado. Use e-mail ou visitante.')}
   });
 
   items.forEach((el, i) => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
       if (choseOnLift) return;
       navigateDock(i);
     });
@@ -441,18 +448,25 @@ function gg(){toast('Login com Google é simulado. Use e-mail ou visitante.')}
   });
 })();
 
-function syncDockActive(v) {
-  const map = { '': 0, 'eventos': 1, 'evento': 1, 'favoritos': 2, 'carrinho': 3, 'checkout': 3, 'ingressos': 4, 'confirmacao': 4, 'perfil': 5, 'entrar': 5 };
-  const activeIdx = map[v] !== undefined ? map[v] : -1;
-  document.querySelectorAll('.gdock-item').forEach((el, i) => {
+function syncTopDockActive(v, hashFull) {
+  const map = { '': 0, 'eventos': 1, 'evento': 1, 'favoritos': 5, 'carrinho': 6, 'checkout': 6, 'ingressos': 7, 'confirmacao': 7, 'painel': 8, 'perfil': 9, 'entrar': 9 };
+  let activeIdx = map[v] !== undefined ? map[v] : -1;
+  if (v === 'eventos') {
+    if (F.c === 'Shows') activeIdx = 2;
+    else if (F.c === 'Teatro') activeIdx = 3;
+    else if (F.c === 'Festas') activeIdx = 4;
+    else activeIdx = 1;
+  }
+  document.querySelectorAll('.top-item').forEach((el, i) => {
     el.classList.toggle('active', i === activeIdx);
   });
 }
 
 function go(){const h=location.hash.split('/'),v=h[1]||'',A=$('#app');
 if(v=='eventos'){A.innerHTML=listing();grid()}else if(v=='evento'){const n=+h[2]||0;if(n!=sel){sel=n;q=[0,0,0];cp=0}A.innerHTML=detail()}else if(v=='carrinho')A.innerHTML=cart();else if(v=='checkout')A.innerHTML=checkout();else if(v=='confirmacao')A.innerHTML=conf();else if(v=='entrar')A.innerHTML=auth();else if(v=='ingressos')A.innerHTML=mine();else if(v=='favoritos')A.innerHTML=favs();else if(v=='perfil')A.innerHTML=U?prof():auth();else if(v=='painel')A.innerHTML=panel(h[2],h[3]);else A.innerHTML=home();
-document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('on',(v=='eventos'&&a.textContent=='Eventos')||(v=='painel'&&a.textContent=='Organizar')));
-syncDockActive(v);
+syncTopDockActive(v, location.hash);
 if(v=='painel'&&h[2]=='participantes')prow();bag();const u=$('#ub');u.textContent=U?'Meus ingressos':'Entrar';u.setAttribute('href',U?'#/ingressos':'#/entrar');scrollTo(0,0)}
 addEventListener('hashchange',go);go();
-</script></body></html>
+</script>
+</body>
+</html>
