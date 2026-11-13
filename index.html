@@ -8,21 +8,22 @@
 <style>
 :root{--bg:#fff;--sf:#f5f5f7;--ink:#1d1d1f;--mu:#6e6e73;--ln:rgba(0,0,0,.1);--bl:#0071e3;--gl:rgba(255,255,255,.78);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.011em;padding-bottom:48px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.011em;padding-bottom:48px;overflow-x:hidden}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
 .w{max-width:1200px;margin:0 auto;padding:0 24px}
 
 /* Top Navbar with Integrated Animated/Magnetic Icons */
-.top-nav .nv{padding:0 24px}
+.top-nav .nv{padding:0 16px}
 
 nav.top-nav{position:sticky;top:0;z-index:90;background:rgba(10,61,240,0.92);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid rgba(255,255,255,0.15);color:#fff}
 :root[data-theme=dark] nav.top-nav{background:rgba(11,31,110,0.92);border-bottom:1px solid rgba(255,255,255,0.1)}
-.nv{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px;width:100%}
-.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-style:italic;font-size:25px;letter-spacing:-.04em;color:#fff;flex-shrink:0}.logo svg{width:24px;height:24px}
+.nv{display:flex;align-items:center;justify-content:space-between;height:70px;gap:8px;width:100%;max-width:100%;overflow:hidden}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-style:italic;font-size:25px;letter-spacing:-.04em;color:#fff;flex-shrink:0;margin-left:5px}.logo svg{width:24px;height:24px}
 
 /* Top Magnetic Bar Container */
-.top-dock{position:relative;display:flex;gap:4px;padding:4px 8px;border-radius:24px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.14);touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.top-item{position:relative;height:42px;padding:0 10px;border:0;border-radius:21px;background:transparent;display:flex;align-items:center;gap:6px;cursor:pointer;color:rgba(255,255,255,0.75);transition:color .15s}
+.top-dock{position:relative;display:flex;gap:4px;padding:4px 8px;border-radius:24px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.14);touch-action:pan-y;user-select:none;-webkit-user-select:none;max-width:calc(100% - 140px);overflow-x:auto;scrollbar-width:none}
+.top-dock::-webkit-scrollbar{display:none}
+.top-item{position:relative;height:42px;padding:0 10px;border:0;border-radius:21px;background:transparent;display:flex;align-items:center;gap:6px;cursor:pointer;color:rgba(255,255,255,0.75);transition:color .15s;flex-shrink:0}
 .top-item:focus-visible{outline:none;box-shadow:0 0 0 2px #fff}
 .top-item.active,.top-item.near{color:#fff}
 .top-glyph{display:block;width:20px;height:20px;transform-origin:50% 100%;transition:transform .14s cubic-bezier(.3,.7,.4,1);will-change:transform;flex-shrink:0}
@@ -33,9 +34,9 @@ nav.top-nav{position:sticky;top:0;z-index:90;background:rgba(10,61,240,0.92);bac
 
 .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 20px;border-radius:8px;border:0;background:var(--bl);color:#fff;font-weight:600;font-size:14px;cursor:pointer;transition:filter .2s,transform .15s}
 .btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.97)}.btn.w100{width:100%;height:48px}
-.nv .btn{background:#fff;color:var(--hd);height:36px;padding:0 16px;font-size:14px;border-radius:999px;flex-shrink:0}
+.nv .btn{background:#fff;color:var(--hd);height:36px;padding:0 14px;font-size:14px;border-radius:999px;flex-shrink:0}
 
-/* Micro-interações nos ícones do site (Categorias, Favoritos, Setas, Quantidade) */
+/* Micro-interações nos ícones do site */
 .cc{display:flex;flex-direction:column;align-items:center;gap:10px;padding:26px 12px;border:1px solid var(--ln);border-radius:12px;color:var(--mu);font-weight:600;font-size:15px;transition:border-color .25s,color .25s,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
 .cc svg{width:32px;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
 .cc:hover{border-color:var(--bl);color:var(--bl);transform:translateY(-3px);box-shadow:0 10px 24px -10px rgba(10,71,245,.25)}
@@ -60,16 +61,17 @@ nav.top-nav{position:sticky;top:0;z-index:90;background:rgba(10,61,240,0.92);bac
 .qt button:active{transform:scale(.88)}
 .qt span{min-width:14px;text-align:center;font-weight:600}
 
-/* photographic scenes */
-.ph{position:relative;overflow:hidden;background-size:cover;aspect-ratio:4/3;color:#fff}
+/* photographic scenes & Realistic Image Banners */
+.ph{position:relative;overflow:hidden;background-size:cover;background-position:center;aspect-ratio:4/3;color:#fff}
 .ph::before{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--ch,60px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Cg fill='%23000'%3E%3Ccircle cx='14' cy='30' r='9'/%3E%3Cpath d='M0 70V50q14-14 28 0v20Z'/%3E%3Ccircle cx='52' cy='22' r='10'/%3E%3Cpath d='M36 70V46q16-16 32 0v24Z'/%3E%3Ccircle cx='92' cy='32' r='9'/%3E%3Cpath d='M78 70V54q14-14 28 0v16Z'/%3E%3Ccircle cx='122' cy='24' r='10'/%3E%3Cpath d='M108 70V46q14-16 30 0v24Z'/%3E%3Cpath d='M64 40l-4-22 3-1 6 21Z'/%3E%3C/g%3E%3C/svg%3E") repeat-x bottom/auto 100%}
 .ph::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 50% 35%,transparent 40%,rgba(0,0,0,.55)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E")}
-.s1{background:conic-gradient(from 158deg at 28% -5%,transparent 0 12deg,rgba(255,110,200,.6) 16deg,transparent 24deg 44deg,rgba(110,150,255,.5) 50deg,transparent 58deg),conic-gradient(from 186deg at 76% -5%,transparent 0 6deg,rgba(255,255,255,.45) 10deg,transparent 18deg 34deg,rgba(255,80,160,.55) 40deg,transparent 48deg),radial-gradient(80% 60% at 50% 100%,#8a22b5,transparent 70%),linear-gradient(#10031c,#2d0b4a)}
-.s2{background:conic-gradient(from 160deg at 25% -5%,transparent 0 10deg,rgba(100,220,255,.6) 15deg,transparent 24deg 40deg,rgba(255,255,255,.4) 46deg,transparent 54deg),conic-gradient(from 184deg at 72% -5%,transparent 0 8deg,rgba(80,140,255,.65) 13deg,transparent 22deg 38deg,rgba(150,120,255,.5) 44deg,transparent 52deg),radial-gradient(90% 60% at 50% 100%,#1b6fe0,transparent 70%),linear-gradient(#020f26,#0a3a86)}
-.s3{background:radial-gradient(34% 55% at 50% 28%,rgba(255,205,120,.95),rgba(255,150,60,.35) 50%,transparent 75%),linear-gradient(#150a04,#4a2410)}
-.s4{background:radial-gradient(32% 65% at 50% 72%,rgba(255,225,170,.85),transparent 72%),repeating-linear-gradient(90deg,#4f0512 0 26px,#8e1024 46px,#4f0512 72px)}
-.s5{background:radial-gradient(1.5px 1.5px at 14% 12%,#fff,transparent),radial-gradient(1.5px 1.5px at 62% 8%,#fff,transparent),radial-gradient(1px 1px at 84% 20%,#fff,transparent),radial-gradient(1px 1px at 36% 22%,#fff,transparent),radial-gradient(48% 34% at 50% 44%,rgba(130,255,230,.6),transparent 72%),linear-gradient(#020b12,#0a2f3d)}
-.s6{background:radial-gradient(circle at 50% 74%,#fff4b8 0 6%,#ffb347 11%,transparent 44%),linear-gradient(#2a0f55,#c2417a 55%,#ff9a3c 88%)}
+
+/* Real Background Image Classes for Carousel & Banners */
+.sl.bg-b1 { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; }
+.sl.bg-b2 { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; }
+.sl.bg-b3 { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; }
+.sl.bg-b4 { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; }
+
 .sr{margin:34px auto 0;max-width:640px;display:flex;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-radius:999px;padding:7px 7px 7px 22px}
 .sr input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;font:inherit}.sr input::placeholder{color:rgba(255,255,255,.7)}
 section{padding:48px 0 8px}
@@ -147,16 +149,8 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
 .sl p{font-size:19px;margin-bottom:24px}.sl .btn{background:#fff;color:#111}
 .dots{position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:3}.dots i{width:9px;height:9px;border-radius:5px;background:rgba(255,255,255,.55);cursor:pointer;transition:width .3s}.dots i.on{background:#fff;width:24px}
 
-/* posters */
-.pz::before{content:"";position:absolute;left:auto;bottom:auto;height:auto;right:-14%;top:-18%;width:62%;aspect-ratio:1;border-radius:50%;background:var(--a)}
-.pz::after{content:"";position:absolute;inset:auto;left:-8%;bottom:-22%;width:48%;aspect-ratio:1;background:var(--b);transform:rotate(16deg)}
-.pz.s1{background:#7b2ff7;--a:#ffe600;--b:#ff3d81}.pz.s2{background:#0a3df0;--a:#00d4ff;--b:#ffe600}.pz.s3{background:#ff8a00;--a:#2b1055;--b:#fff1c2}.pz.s4{background:#c4112f;--a:#ffcf33;--b:#2b0a14}.pz.s5{background:#00a389;--a:#0b2a4a;--b:#b7ff6a}.pz.s6{background:#ff3d81;--a:#ffb347;--b:#5b2cff}
-.sl.pz::before{width:46vw;max-width:640px;right:5%;top:50%;transform:translateY(-50%)}.sl.pz::after{width:26vw;max-width:340px;left:auto;right:34%;bottom:-20%}
-.pz>b,.pz>small{position:absolute;z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.25)}
-.pz>b{left:8%;right:28%;top:10%;font:400 clamp(26px,3vw,36px)/.95 Anton,Impact,sans-serif;text-transform:uppercase}.pz>small{left:8%;bottom:9%;font-weight:700;font-size:12px;letter-spacing:.08em}
-.tgl{display:block;background:var(--bl);color:#fff;font-size:12px;font-weight:600;padding:6px 12px;border-radius:8px 8px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Card images */
 .card .ph{aspect-ratio:16/10;border-radius:0 0 10px 10px;box-shadow:none}
-.dh.pz::before{width:42vw;max-width:560px;right:4%;top:-24%}.dh.pz::after{width:22vw;max-width:300px;left:auto;right:30%}
 .eb{color:#fff;letter-spacing:.1em;font-size:13px;font-weight:700;opacity:.95}
 .cg{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 .cta2{margin:56px 0;border-radius:16px;background:var(--hd);color:#fff;padding:38px 44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.cta2 h2{color:#fff;font-size:28px}.cta2 p{opacity:.85;margin-top:6px}.cta2 .btn{background:#fff;color:var(--hd)}
@@ -228,7 +222,7 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
   </button>
 </nav>
 
-<div style="display:flex;align-items:center;gap:8px"><a class="btn" id="ub" href="#/entrar">Entrar</a></div>
+<div style="display:flex;align-items:center;gap:8px;margin-right:5px"><a class="btn" id="ub" href="#/entrar">Entrar</a></div>
 </div></nav>
 
 <main id="app"></main>
@@ -237,28 +231,40 @@ footer{border-top:1px solid var(--ln);padding:28px 0 40px;font-size:13px;color:v
 
 <script>
 const E=[
-  {n:"Aurora Festival 2026",c:"Shows",city:"Belo Horizonte",l:"Esplanada do Mineirão",d:"18 Out",p:189,s:2},
-  {n:"Noite de Jazz",c:"Shows",city:"Juiz de Fora",l:"Cine-Theatro Central",d:"20 Out",p:90,s:3},
-  {n:"Hamlet — Temporada",c:"Teatro",city:"Belo Horizonte",l:"Palácio das Artes",d:"24 Out",p:70,s:4},
-  {n:"Cine ao Ar Livre",c:"Cinema",city:"Juiz de Fora",l:"Parque Halfeld",d:"26 Out",p:35,s:5},
-  {n:"Eletro Sunset",c:"Festas",city:"Rio de Janeiro",l:"Pier Mauá",d:"02 Nov",p:70,s:6},
-  {n:"Rock na Praça",c:"Shows",city:"Belo Horizonte",l:"Praça da Estação",d:"09 Nov",p:60,s:1},
+  {n:"Aurora Festival 2026",c:"Shows",city:"Belo Horizonte",l:"Esplanada do Mineirão",d:"18 Out",p:189,s:1},
+  {n:"Noite de Jazz",c:"Shows",city:"Juiz de Fora",l:"Cine-Theatro Central",d:"20 Out",p:90,s:2},
+  {n:"Hamlet — Temporada",c:"Teatro",city:"Belo Horizonte",l:"Palácio das Artes",d:"24 Out",p:70,s:3},
+  {n:"Cine ao Ar Livre",c:"Cinema",city:"Juiz de Fora",l:"Parque Halfeld",d:"26 Out",p:35,s:4},
+  {n:"Eletro Sunset",c:"Festas",city:"Rio de Janeiro",l:"Pier Mauá",d:"02 Nov",p:70,s:1},
+  {n:"Rock na Praça",c:"Shows",city:"Belo Horizonte",l:"Praça da Estação",d:"09 Nov",p:60,s:2},
   {n:"Stand-Up Comedy Night",c:"Teatro",city:"Juiz de Fora",l:"Teatro Pró-Música",d:"15 Nov",p:50,s:3},
-  {n:"Baile Funk do Rio",c:"Festas",city:"Rio de Janeiro",l:"Fundição Progresso",d:"22 Nov",p:90,s:6},
-  {n:"Sertanejo Universitário",c:"Shows",city:"Juiz de Fora",l:"Cultural Bar",d:"28 Nov",p:80,s:2},
-  {n:"Mostra de Cinema Independente",c:"Cinema",city:"Belo Horizonte",l:"Cine Belas Artes",d:"05 Dez",p:30,s:5}
+  {n:"Baile Funk do Rio",c:"Festas",city:"Rio de Janeiro",l:"Fundição Progresso",d:"22 Nov",p:90,s:4},
+  {n:"Sertanejo Universitário",c:"Shows",city:"Juiz de Fora",l:"Cultural Bar",d:"28 Nov",p:80,s:1},
+  {n:"Mostra de Cinema Independente",c:"Cinema",city:"Belo Horizonte",l:"Cine Belas Artes",d:"05 Dez",p:30,s:2},
+  {n:"Symphonic Metal Night",c:"Shows",city:"São Paulo",l:"Espaço Unimed",d:"10 Dez",p:150,s:3},
+  {n:"Acústico MPB",c:"Shows",city:"Juiz de Fora",l:"Teatro Solar",d:"12 Dez",p:65,s:4},
+  {n:"O Fantasma da Ópera",c:"Teatro",city:"Rio de Janeiro",l:"Theatro Municipal",d:"15 Dez",p:120,s:1},
+  {n:"Auto da Compadecida",c:"Teatro",city:"Juiz de Fora",l:" Cine-Theatro Central",d:"18 Dez",p:55,s:2},
+  {n:"Réveillon Paradise",c:"Festas",city:"Buzios",l:"Beach Club Geribá",d:"31 Dez",p:250,s:3},
+  {n:"Neon Rave",c:"Festas",city:"Juiz de Fora",l:"Privilège",d: "03 Jan",p:85,s:4},
+  {n:"Festival de Curtas",c:"Cinema",city:"Juiz de Fora",l:"Mamm",d:"08 Jan",p:25,s:1},
+  {n:"Clássicos Sci-Fi",c:"Cinema",city:"Belo Horizonte",l:"Cine Art",d:"12 Jan",p:40,s:2},
+  {n:"Indie Rock Fest",c:"Shows",city:"Rio de Janeiro",l:"Circo Voador",d:"16 Jan",p:110,s:3},
+  {n:"Comédia Stand-Up Total",c:"Teatro",city:"São Paulo",l:"Teatro Bradesco",d:"20 Jan",p:90,s:4},
+  {n:"Sunset Electronic",c:"Festas",city:"Juiz de Fora",l:"Espaço Hall",d:"25 Jan",p:95,s:1},
+  {n:"Noite do Terror",c:"Cinema",city:"Juiz de Fora",l:"Cine Ritz",d:"30 Jan",p:30,s:2}
 ];
 const $=s=>document.querySelector(s),R=n=>'R$ '+n.toFixed(2).replace('.',',');
 let sel=0,q=[0,0,0],F={c:'Todos',o:0,m:200,q:''},cp=0,tm=600;
 const T=e=>[["Pista",e.p,"Acesso à área geral"],["Pista Premium",Math.round(e.p*1.8),"Área próxima ao palco"],["Camarote",Math.round(e.p*3.2),"Open bar e área reservada"]];
 const sub=()=>T(E[sel]).reduce((a,t,i)=>a+t[1]*q[i],0);
-const card=(e,i)=>`<a class="card" href="#/evento/${i}"><span class="tgl">${e.l}</span><div class="ph pz s${e.s}"><b>${e.n}</b><small>${e.d.toUpperCase()}</small><button class="fv ${FV.has(i)?'on':''}" onclick="fav(event,${i})" aria-label="Favoritar"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11Z"/></svg></button></div><div class="bd"><h4>${e.n}</h4><p>${e.city} | ${e.d}</p><p class="pr">a partir de <b>${R(e.p)}</b></p></div></a>`;
+const card=(e,i)=>`<a class="card" href="#/evento/${i}"><span class="tgl">${e.l}</span><div class="ph bg-b${e.s}"></div><div class="bd"><h4>${e.n}</h4><p>${e.city} | ${e.d}</p><p class="pr">a partir de <b>${R(e.p)}</b></p></div></a>`;
 const IC={Shows:'<path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="16" r="2"/>',Teatro:'<path d="M5 4h14v8a7 7 0 0 1-14 0z"/><path d="M9 10h.01M15 10h.01M9 14c1 1.2 5 1.2 6 0"/>',Festas:'<path d="M12 3l2.2 5.3 5.8.5-4.4 3.8 1.4 5.6L12 15l-5 3.2 1.4-5.6L4 8.8l5.8-.5z"/>',Cinema:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 5v14M16 5v14M3 10h5M3 14h5M16 10h5M16 14h5"/>',Todos:'<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>'};
 let HI=0;
 function hs(n){HI=(n+4)%4;document.querySelectorAll('.sl').forEach((x,i)=>x.classList.toggle('on',i==HI));document.querySelectorAll('.dots i').forEach((x,i)=>x.classList.toggle('on',i==HI))}
 setInterval(()=>{if(document.querySelector('.sl'))hs(HI+1)},5500);
 const home=()=>`<div class="band"><div class="w"><form class="sr" onsubmit="F.q=this.elements.q.value;F.c='Todos';location.hash='#/eventos';return false"><input name="q" placeholder="Pesquisar artista ou evento" aria-label="Buscar"><button class="btn">Pesquisar</button></form></div></div>
-<div class="car">${E.slice(0,4).map((e,i)=>`<a class="sl pz s${e.s} ${i==HI?'on':''}" href="#/evento/${i}"><div class="w"><div class="in"><span class="kk">${e.c} · ${e.d}</span><h2>${e.n}</h2><p>${e.l} · ${e.city}</p><span class="btn">Comprar ingresso</span></div></div></a>`).join('')}<button class="ar l" onclick="hs(HI-1)" aria-label="Anterior">‹</button><button class="ar r" onclick="hs(HI+1)" aria-label="Próximo">›</button><div class="dots">${E.slice(0,4).map((e,i)=>`<i class="${i==HI?'on':''}" onclick="hs(${i})"></i>`).join('')}</div></div>
+<div class="car">${E.slice(0,4).map((e,i)=>`<a class="sl bg-b${i+1} ${i==HI?'on':''}" href="#/evento/${i}"><div class="w"><div class="in"><span class="kk">${e.c} · ${e.d}</span><h2>${e.n}</h2><p>${e.l} · ${e.city}</p><span class="btn">Comprar ingresso</span></div></div></a>`).join('')}<button class="ar l" onclick="hs(HI-1)" aria-label="Anterior">‹</button><button class="ar r" onclick="hs(HI+1)" aria-label="Próximo">›</button><div class="dots">${E.slice(0,4).map((e,i)=>`<i class="${i==HI?'on':''}" onclick="hs(${i})"></i>`).join('')}</div></div>
 <div class="w"><section><div class="hd"><h2>Explore por categoria</h2></div><div class="cg">${['Shows','Teatro','Festas','Cinema','Todos'].map(c=>`<a class="cc" href="#/eventos" onclick="F.c='${c}';F.q=''"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${IC[c]}</svg><span>${c=='Todos'?'Todos os eventos':c}</span></a>`).join('')}</div></section>
 <section><div class="hd"><h2>Em alta</h2><a class="mo" href="#/eventos">Ver tudo</a></div><div class="gr">${E.map(card).join('')}</div></section>
 <div class="cta2"><div><h2>Tem um evento? Venda no Palco.</h2><p>Crie, publique e acompanhe suas vendas em tempo real.</p></div><a class="btn" href="#/painel">Começar a vender</a></div></div>`;
@@ -267,12 +273,12 @@ const listing=()=>`<div class="w pg"><h1>Eventos</h1><div class="bar"><div class
 function grid(){let L=E.map((e,i)=>[e,i]).filter(([e])=>(F.c=='Todos'||e.c==F.c)&&e.p<=F.m&&(!F.q||(e.n+' '+e.l+' '+e.city).toLowerCase().includes(F.q.toLowerCase())));if(F.o==1)L.sort((a,b)=>a[0].p-b[0].p);if(F.o==2)L.sort((a,b)=>b[0].p-a[0].p);$('#res').textContent=L.length+' eventos';$('#gr').innerHTML=L.length?L.map(([e,i])=>card(e,i)).join(''):'<p class="empty">Nenhum evento encontrado com esses filtros.</p>'}
 const tix=()=>T(E[sel]).map((t,i)=>`<div class="tk"><div><b>${t[0]}</b><small>${t[2]} · ${R(t[1])}</small></div><div class="qt"><button onclick="st(${i},-1)" aria-label="Menos">−</button><span>${q[i]}</span><button onclick="st(${i},1)" aria-label="Mais">+</button></div></div>`).join('')+`<div class="tt"><span>Total</span><span>${R(sub())}</span></div>`;
 function st(i,d){const was=q.some(x=>x);q[i]=Math.max(0,Math.min(8,q[i]+d));if(!was&&q.some(x=>x))tm=600;$('#tx').innerHTML=tix();bag()}
-const detail=()=>{const e=E[sel];return`<header class="ph pz s${e.s} dh"><div class="w in"><p class="eb">${e.c} · ${e.d}</p><h1>${e.n}</h1><div class="mt"><span>${e.l}, ${e.city}</span><span>20h · Abertura 18h</span><span>Classificação: 16 anos</span></div></div></header>
+const detail=()=>{const e=E[sel];return`<header class="ph bg-b${e.s} dh"><div class="w in"><p class="eb">${e.c} · ${e.d}</p><h1>${e.n}</h1><div class="mt"><span>${e.l}, ${e.city}</span><span>20h · Abertura 18h</span><span>Classificação: 16 anos</span></div></div></header>
 <div class="w dl"><div><h3>Sobre o evento</h3><p>Uma noite pensada em cada detalhe: som de alta fidelidade, iluminação cênica e uma estrutura que coloca você perto de quem importa. Entrada por QR Code, sem fila.</p><h3>Programação</h3><div class="lu">Abertura dos portões<span>18:00</span></div><div class="lu">Atração principal<span>20:00</span></div><div class="lu">Encerramento<span>23:30</span></div><h3>Local</h3><div class="map"><div><i></i>${e.l}<br><small style="color:var(--mu);font-weight:400">${e.city}</small></div></div></div>
 <aside class="box"><h3>Ingressos</h3><div id="tx">${tix()}</div><button class="btn w100" onclick="sub()?location.hash='#/carrinho':toast('Escolha ao menos 1 ingresso')">Comprar ingresso</button></aside></div>`};
 const cart=()=>{const e=E[sel],s=sub(),n=q.reduce((a,b)=>a+b,0),d=s*cp,f=s*.1;
 if(!n)return`<div class="w pg" style="text-align:center;padding:100px 0"><h1 style="text-align:center">Seu carrinho está vazio</h1><p style="color:var(--mu);margin:12px 0 28px">Escolha um evento e seus ingressos aparecem aqui.</p><a class="btn" href="#/eventos">Explorar eventos</a></div>`;
-return`<div class="w pg"><h1>Carrinho</h1></div><div class="w cl"><div>${T(e).map((t,i)=>q[i]?`<div class="it"><div class="ph pz s${e.s}"></div><div><h4>${t[0]} · ${e.n}</h4><p>${e.d} · ${e.l}</p><button class="rm" onclick="q[${i}]=0;bag();$('#app').innerHTML=cart()">Remover</button></div><div style="text-align:right"><div class="qt" style="justify-content:flex-end"><button onclick="cq(${i},-1)">−</button><span>${q[i]}</span><button onclick="cq(${i},1)">+</button></div><b style="display:block;margin-top:8px">${R(t[1]*q[i])}</b></div></div>`:'').join('')}</div>
+return`<div class="w pg"><h1>Carrinho</h1></div><div class="w cl"><div>${T(e).map((t,i)=>q[i]?`<div class="it"><div class="ph bg-b${e.s}"></div><div><h4>${t[0]} · ${e.n}</h4><p>${e.d} · ${e.l}</p><button class="rm" onclick="q[${i}]=0;bag();$('#app').innerHTML=cart()">Remover</button></div><div style="text-align:right"><div class="qt" style="justify-content:flex-end"><button onclick="cq(${i},-1)">−</button><span>${q[i]}</span><button onclick="cq(${i},1)">+</button></div><b style="display:block;margin-top:8px">${R(t[1]*q[i])}</b></div></div>`:'').join('')}</div>
 <aside class="sm"><div class="tm">⏱ Reserva expira em <span id="tmr">${Math.floor(tm/60)}:${String(tm%60).padStart(2,'0')}</span></div><h3 style="font-size:21px;margin-bottom:6px">Resumo</h3><div class="ln"><span>Subtotal</span><span>${R(s)}</span></div><div class="ln"><span>Taxa de serviço</span><span>${R(f)}</span></div>${cp?`<div class="ln g"><span>Cupom PALCO10</span><span>−${R(d)}</span></div>`:''}<form class="cp" onsubmit="if(this.elements.c.value.toUpperCase()=='PALCO10'){cp=.1;$('#app').innerHTML=cart()}else{this.elements.c.placeholder='Cupom inválido';this.elements.c.value=''}return false"><input name="c" placeholder="Cupom (tente PALCO10)"><button class="btn" style="height:40px;background:var(--ink);color:var(--bg)">Aplicar</button></form><div class="tt" style="border-top:1px solid var(--ln)"><span>Total</span><span>${R(s+f-d)}</span></div><button class="btn w100" onclick="location.hash='#/checkout'">Continuar para pagamento</button></aside></div>`};
 function cq(i,d){q[i]=Math.max(1,Math.min(8,q[i]+d));bag();$('#app').innerHTML=cart()}
 function bag(){const n=q.reduce((a,b)=>a+b,0);const b=$('#bc');if(b){b.textContent=n;b.style.display=n?'block':'none'}}
@@ -300,7 +306,7 @@ return`<div class="w" style="max-width:640px;text-align:center;padding:72px 24px
 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#/ingressos">Ver meus ingressos</a><a class="btn" style="background:var(--sf);color:var(--ink)" href="#/">Voltar à home</a></div></div>`};
 const auth=()=>{const t=['Entrar','Criar conta','Recuperar senha'];
 return`<div class="au"><h1 style="font-size:32px;margin:0 0 6px;text-align:left">${t[am]}</h1><p style="color:var(--mu);margin-bottom:22px">${am==2?'Enviaremos um link para o seu e-mail.':'Acesse seus ingressos em qualquer lugar.'}</p>
-<form class="fm" onsubmit="login(event)">${am==1?'<label class="fl">Nome<input name="n" required></label>':''}<label class="fl">E-mail<input name="m" type="email" required></label>${am==2?'':'<label class="fl">Senha<input type="password" required minlength="6"></label>'}<button class="btn w100">${am==2?'Enviar link':t[am]}</button></form>
+<form class="fm" onsubmit="login(event)" autocomplete="off">${am==1?'<label class="fl">Nome<input name="n" required autocomplete="off"></label>':''}<label class="fl">E-mail<input name="m" type="email" required autocomplete="off"></label>${am==2?'':'<label class="fl">Senha<input type="password" required minlength="6" autocomplete="new-password"></label>'}<button class="btn w100">${am==2?'Enviar link':t[am]}</button></form>
 ${am==2?'':'<button class="btn w100" style="background:var(--bg);color:var(--ink);border:1px solid var(--ln);margin-top:12px" onclick="gg()">Continuar com Google</button><button class="btn w100" style="background:transparent;color:var(--bl);margin-top:4px" onclick="guest()">Entrar como visitante (demo)</button>'}
 <p class="sw">${am==0?'Novo por aqui? <button class="lk" onclick="sw(1)">Criar conta</button><br><button class="lk" onclick="sw(2)">Esqueci a senha</button>':'<button class="lk" onclick="sw(0)">Voltar para entrar</button>'}</p></div>`};
 function sw(i){am=i;$('#app').innerHTML=auth()}
@@ -308,7 +314,7 @@ function guest(){U='Visitante';location.hash='#/ingressos'}
 function login(e){e.preventDefault();if(am==2){toast('Link enviado! Confira seu e-mail.');sw(0);return}const f=e.target;U=f.elements.n?f.elements.n.value.split(' ')[0]:f.elements.m.value.split('@')[0];location.hash='#/ingressos'}
 const mine=()=>{const L=O.filter(t=>t.s==ab);
 return`<div class="w pg"><h1>Meus ingressos</h1><div class="bar"><div class="ct">${[['up','Próximos'],['past','Passados'],['can','Cancelados']].map(x=>`<button class="chip ${ab==x[0]?'on':''}" onclick="ab='${x[0]}';$('#app').innerHTML=mine()">${x[1]} (${O.filter(t=>t.s==x[0]).length})</button>`).join('')}</div></div>
-${L.length?L.map(t=>{const e=E[t.e];return`<div class="tix" style="${t.s!='up'?'opacity:.6':''}"><div class="ph pz s${e.s}"></div><div class="mid"><h4 style="font-size:20px;font-weight:700;letter-spacing:-.03em">${e.n}</h4><p style="color:var(--mu)">${e.d} · ${e.l}, ${e.city}</p><p style="margin:10px 0 14px"><span class="bg">${t.t}</span></p><div class="ct"><button class="chip" onclick="toast('Download iniciado (simulado)')">Baixar</button><button class="chip" onclick="toast('Link de transferência copiado')">Transferir</button></div></div><div class="qr" onclick="zoom('${t.id}')">${qr(t.id)}<small style="color:var(--mu)">${t.id}</small></div></div>`}).join(''):'<p class="empty">Nenhum ingresso aqui.</p>'}</div>`};
+${L.length?L.map(t=>{const e=E[t.e];return`<div class="tix" style="${t.s!='up'?'opacity:.6':''}"><div class="ph bg-b${e.s}"></div><div class="mid"><h4 style="font-size:20px;font-weight:700;letter-spacing:-.03em">${e.n}</h4><p style="color:var(--mu)">${e.d} · ${e.l}, ${e.city}</p><p style="margin:10px 0 14px"><span class="bg">${t.t}</span></p><div class="ct"><button class="chip" onclick="toast('Download iniciado (simulado)')">Baixar</button><button class="chip" onclick="toast('Link de transferência copiado')">Transferir</button></div></div><div class="qr" onclick="zoom('${t.id}')">${qr(t.id)}<small style="color:var(--mu)">${t.id}</small></div></div>`}).join(''):'<p class="empty">Nenhum ingresso aqui.</p>'}</div>`};
 let FV=new Set(),NT=true,PR={m:''},DP=7,CR=null,PF={q:'',s:''},EF=null;
 let OR=[];
 let ME=[{n:'Aurora Festival 2026',c:'Shows',ds:'Três dias, quatro palcos.',d:'2026-10-18',h:'18:00',loc:'Esplanada do Mineirão',city:'Belo Horizonte',st:'Publicado',sold:842,lots:[{n:'Pista',p:189,q:1000},{n:'Premium',p:340,q:400},{n:'Camarote',p:605,q:100}]},{n:'Noite de Jazz',c:'Shows',ds:'',d:'2026-10-20',h:'20:00',loc:'Cine-Theatro Central',city:'Juiz de Fora',st:'Publicado',sold:310,lots:[{n:'Pista',p:90,q:400}]},{n:'Eletro Sunset',c:'Festas',ds:'',d:'2026-11-02',h:'17:00',loc:'Pier Mauá',city:'Rio de Janeiro',st:'Rascunho',sold:0,lots:[{n:'Pista',p:70,q:800}]},{n:'Cine ao Ar Livre',c:'Cinema',ds:'',d:'2026-10-26',h:'19:30',loc:'Parque Halfeld',city:'Juiz de Fora',st:'Pausado',sold:128,lots:[{n:'Pista',p:35,q:300}]}];
@@ -413,7 +419,7 @@ function gg(){toast('Login com Google é simulado. Use e-mail ou visitante.')}
   function navigateDock(i) {
     const route = items[i]?.dataset.route;
     if (!route) return;
-    if (route === '#/eventos' && i === 1) { F.c = 'Todos'; F.q = ''; }
+    if (route === '#/eventos' && i === 1) { F.c = 'Shows'; F.q = ''; }
     if (location.hash === route || (route === '#/' && !location.hash)) {
       go();
     } else {
