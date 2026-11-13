@@ -12,18 +12,25 @@ body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,-apple-system
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
 .w{max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* Page Transition Wave Effect (Onda de Mar Fluida) */
+/* Onda de Mar Fluida (Fluxo Único da Esquerda para a Direita) */
 #page-transition-overlay {
   position: fixed;
-  inset: 0;
+  inset: -20vh -50vw;
   z-index: 9999;
   pointer-events: none;
-  background: linear-gradient(135deg, #75a5ff 0%, #0a47f5 100%);
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-  transition: clip-path 2.5s cubic-bezier(0.25, 1, 0.5, 1);
+  background: linear-gradient(110deg, #75a5ff 0%, #0a47f5 45%, #052288 100%);
+  transform: translateX(-120%) skewX(-18deg);
+  will-change: transform;
 }
+
+@keyframes waveFlow {
+  0% { transform: translateX(-120%) skewX(-18deg); }
+  50% { transform: translateX(0%) skewX(-18deg); }
+  100% { transform: translateX(120%) skewX(-18deg); }
+}
+
 #page-transition-overlay.animating {
-  clip-path: polygon(0 0, 120% 0, 100% 100%, 0 100%);
+  animation: waveFlow 1.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
 
 /* Top Navbar with Integrated Animated/Magnetic Icons */
@@ -494,22 +501,41 @@ function syncTopDockActive(v, hashFull) {
   });
 }
 
+let isFirstLoad = true;
+let isTransitioning = false;
+
 function go(){
+  if (isFirstLoad) {
+    isFirstLoad = false;
+    renderPageContent();
+    return;
+  }
+
+  if (isTransitioning) return;
+  isTransitioning = true;
+
   const overlay = document.getElementById('page-transition-overlay');
-  if (overlay) overlay.classList.add('animating');
+  if (overlay) {
+    overlay.classList.remove('animating');
+    void overlay.offsetWidth;
+    overlay.classList.add('animating');
+  }
 
-  // Metade do tempo (1250ms) a onda cobre a tela; trocamos o conteúdo exatamente no pico da onda líquida
   setTimeout(() => {
-    const h=location.hash.split('/'),v=h[1]||'',A=$('#app');
-    if(v=='eventos'){A.innerHTML=listing();grid()}else if(v=='evento'){const n=+h[2]||0;if(n!=sel){sel=n;q=[0,0,0];cp=0}A.innerHTML=detail()}else if(v=='carrinho')A.innerHTML=cart();else if(v=='checkout')A.innerHTML=checkout();else if(v=='confirmacao')A.innerHTML=conf();else if(v=='entrar')A.innerHTML=auth();else if(v=='ingressos')A.innerHTML=mine();else if(v=='favoritos')A.innerHTML=favs();else if(v=='perfil')A.innerHTML=U?prof():auth();else if(v=='painel')A.innerHTML=panel(h[2],h[3]);else A.innerHTML=home();
-    syncTopDockActive(v, location.hash);
-    if(v=='painel'&&h[2]=='participantes')prow();bag();const u=$('#ub');u.textContent=U?'Meus ingressos':'Entrar';u.setAttribute('href',U?'#/ingressos':'#/entrar');scrollTo(0,0);
+    renderPageContent();
+  }, 800);
 
-    // A onda recolhe graciosamente revelando o novo conteúdo
-    setTimeout(() => {
-      if (overlay) overlay.classList.remove('animating');
-    }, 1250);
-  }, 1250);
+  setTimeout(() => {
+    if (overlay) overlay.classList.remove('animating');
+    isTransitioning = false;
+  }, 1600);
+}
+
+function renderPageContent() {
+  const h=location.hash.split('/'),v=h[1]||'',A=$('#app');
+  if(v=='eventos'){A.innerHTML=listing();grid()}else if(v=='evento'){const n=+h[2]||0;if(n!=sel){sel=n;q=[0,0,0];cp=0}A.innerHTML=detail()}else if(v=='carrinho')A.innerHTML=cart();else if(v=='checkout')A.innerHTML=checkout();else if(v=='confirmacao')A.innerHTML=conf();else if(v=='entrar')A.innerHTML=auth();else if(v=='ingressos')A.innerHTML=mine();else if(v=='favoritos')A.innerHTML=favs();else if(v=='perfil')A.innerHTML=U?prof():auth();else if(v=='painel')A.innerHTML=panel(h[2],h[3]);else A.innerHTML=home();
+  syncTopDockActive(v, location.hash);
+  if(v=='painel'&&h[2]=='participantes')prow();bag();const u=$('#ub');u.textContent=U?'Meus ingressos':'Entrar';u.setAttribute('href',U?'#/ingressos':'#/entrar');scrollTo(0,0);
 }
 
 addEventListener('hashchange',go);go();
